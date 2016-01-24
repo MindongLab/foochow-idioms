@@ -107,8 +107,10 @@ def processOne(id):
         newLine['indices'] = item['indices']
         tmp['field_annotations'].append(newLine)
     
-    tmp['field_source']=addSource()
-    
+    tmp['field_source']={}
+    tmp['field_source']['source']=addSource()
+    if ('page' in stnc):
+        tmp['field_source']['metadata']=json.dumps({'page':stnc['page']})
     cSentence.insert_one(tmp)
 
 if __name__ == '__main__':

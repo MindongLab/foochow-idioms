@@ -1,0 +1,28 @@
+#headerBar{
+    height:50px;
+    background-color: black;
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right:0px;
+    width: 100%;
+}
+
+#mainContainer{
+    position:absolute;
+    top:50px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    background-color: aquamarine;
+    width: 100%;
+}
+
+#sideBar{
+    position: absolute;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    width:200px;
+    background-color: bisque;
+}

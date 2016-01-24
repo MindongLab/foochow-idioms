@@ -10,14 +10,14 @@ entity_sentence
     [
         <reference>
     ]
-    field_annotations  //µ¥×Ö×¢½â
+    field_annotations  //å•å­—æ³¨è§£
     [
         indices:[]
         text:[]
         explanation:[]
     ]
-    field_notes  //½âËµ
-    field_metaphor //±ÈÓ÷Òå
+    field_notes  //è§£è¯´
+    field_metaphor //æ¯”å–»ä¹‰
     field_source
     {
         source:<reference>
