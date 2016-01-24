@@ -1,0 +1,64 @@
+#headerBar{
+    height:50px;
+    /*background-color: black;*/
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right:0px;
+    width: 100%;
+}
+
+#logoRegion{
+    position: absolute;
+    left: 0px;
+    top:0px;
+    bottom:0px;
+    width:300px;
+    /*background: gray;*/
+}
+
+#mainContainer{
+    position:absolute;
+    top:50px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    background-color: aquamarine;
+    width: 100%;
+}
+
+#sideBar{
+    position: absolute;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    width:300px;
+    background-color: bisque;
+    overflow-y: auto;
+}
+
+#mainPane{
+    position: absolute;
+    top:0px;
+    left:300px;
+    bottom:0px;
+    right:0px;
+    background-color: white;
+    overflow-y: auto;
+}
+
+#contentWrapper{
+    padding-left: 20px;
+}
+
+.charSymbol{
+    display: inline;
+    width:17px;
+    height:17px;
+    padding: 1 1 1 1;
+    background-color: firebrick;
+    color: white;
+    font-size: 15px;
+    overflow: hidden;
+    margin-right:5px;
+}

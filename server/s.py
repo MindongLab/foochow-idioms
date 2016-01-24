@@ -40,11 +40,40 @@ class JSONEncoder(json.JSONEncoder):
 def hello_world():
     return "OK"
 
-@app.route('/api/<path:sentence>')
+@app.route('/api/tag/<path:tagname>')
+def show_tag(tagname):
+    cursor = cTag.find({'field_title':tagname})
+    if (cursor.count()==0):
+        return make_response('Not Found',404)
+    tagId=cursor[0]['_id']
+    cursor = cSentence.find({'field_tags':tagId})
+    result = []
+    for item in cursor:
+        result.append(item['field_text'])
+    r = make_response(JSONEncoder(ensure_ascii=False).encode(result))
+    r.mimetype="application/json"
+    r.headers.add('Access-Control-Allow-Origin', '*')
+    return r
+
+@app.route('/api/all/')
+def show_all():
+    cursor = cSentence.find()
+    if (cursor.count()==0):
+        return make_response('Not Found',404)
+    result = []
+    for item in cursor:
+        result.append(item['field_text'])
+    r = make_response(JSONEncoder(ensure_ascii=False).encode(result))
+    r.mimetype="application/json"
+    r.headers.add('Access-Control-Allow-Origin', '*')
+    return r
+
+@app.route('/api/sentence/<path:sentence>')
 def get_sentence(sentence):
     cursor = cSentence.find({'field_text':sentence})
     if (cursor.count()==0):
         r= make_response('Not Found',404)
+        r.headers.add('Access-Control-Allow-Origin', '*')
         return r
     else:
         tmp=[]
@@ -60,6 +89,7 @@ def get_sentence(sentence):
         if (len(tmp)==1):
             r = make_response(JSONEncoder(ensure_ascii=False).encode(tmp[0]))
             r.mimetype="application/json"
+            r.headers.add('Access-Control-Allow-Origin', '*')
             return r
         else:
             return JSONEncoder(ensure_ascii=False).encode(tmp)
