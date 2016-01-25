@@ -1,12 +1,12 @@
 <html lang="ch-ZHT">
     <head>
         <meta charset="utf-8">
-        <link href="vendor/fabric/fabric.css" type="text/css" rel="stylesheet" />
-        <link href="vendor/fabric/fabric.components.css" type="text/css" rel="stylesheet" />
-        <link href="css/index.css" type="text/css" rel="stylesheet" />  
+        <link href="assets/vendor/fabric/fabric.css" type="text/css" rel="stylesheet" />
+        <link href="assets/vendor/fabric/fabric.components.css" type="text/css" rel="stylesheet" />
+        <link href="assets/css/index.css" type="text/css" rel="stylesheet" />  
     </head>
     <body ng-app="app">
-        <div ng-controller="headerCtrl" id="headerBar" class="ms-bgColor-themeTertiary" ng-include="'template/header.tpl.html'">
+        <div ng-controller="headerCtrl" id="headerBar" class="ms-bgColor-themeTertiary" ng-include="'app/views/header.tpl.html'">
             
         </div>
         <div id="mainContainer">
@@ -16,13 +16,16 @@
                 </ul>
             </div>
             <div id="mainPane" ng-controller="mainCtrl">          
-                <div ng-include=" detailMode && 'template/showDetails.tpl.html' || 'template/welcome.tpl.html' "></div>
+                <div ng-include=" detailMode && 'app/views/showDetails.tpl.html' || 'app/views/welcome.tpl.html' "></div>
             </div>
         </div>
-        <script src="vendor/howlerjs/howler.js"></script>
-        <script src="vendor/angular/angular.js"></script>
-        <script src="js/utils.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/sidebarCtrl.js"></script>
+        <script src="assets/vendor/howlerjs/howler.js"></script>
+        <script src="assets/vendor/angular/angular.js"></script>
+        <script src="app/js/utils.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/services/DataService.js"></script>
+        <script src="app/controllers/sidebarCtrl.js"></script>
+        <script src="app/controllers/mainCtrl.js"></script>
+        <script src="app/controllers/headerCtrl.js"></script>
     </body>
 </html>

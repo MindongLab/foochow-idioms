@@ -1,0 +1,42 @@
+(function () {
+    "use strict";
+    angular.module('app').controller('mainCtrl', ['$scope', '$rootScope', 'DataService', function ($scope, $rootScope, dataService) {
+        $scope.result = '';
+        $scope.detailMode = false;
+        $scope.buttonClicked = function () {
+            $scope.result = 'Working';
+            dataService.getAllIdioms().then(function (r) {
+                $scope.result = r;
+            }).catch(function () {
+                console.log('mainCtrl: getAllIdioms failed.');
+            });
+
+        };
+
+        $scope.tagClicked = function (tagName) {
+            $rootScope.$emit("switchToTag", {'tag': tagName});
+        };
+
+        $scope.playButtonClicked = function (filename) {
+            var uri = 'assets/audio/' + filename.replace('.wma', '.mp3'),
+                sound = new Howl({
+                    urls: [uri]
+                }).play();
+        };
+
+        //Listen on switchToIdiom event
+        var unbind = $rootScope.$on('switchToIdiom', function (e, args) {
+            if (args.text) {
+                dataService.getIdiomByText(args.text).then(function (r) {
+                    $scope.result = r;
+                    $scope.detailMode = true;
+                }).catch(function () {
+                    console.log('mainCtrl: view change failed.');
+                });
+            }
+        });
+
+        $scope.$on('$destroy', unbind);
+
+    }]);
+}());
