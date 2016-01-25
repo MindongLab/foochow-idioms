@@ -1,25 +1,34 @@
 <div id="contentWrapper">
-    <h1 class="ms-font-su">{{result['field_text']}}</h1>
-    <i class="ms-Icon ms-Icon--play"></i>
-    <div ng-show="result['field_notes'].length>0">
-        <div class="charsymbol">案</div><span class="ms-font-l">{{result['field_notes']}}</span>
+    <div id="detailsHeader">
+        <div class="ms-font-su">{{result['field_text']}}</div>
+        <div>
+            <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter playLabel">发音</span>
+            <button class="ms-Button ms-Button--hero " ng-click="playButtonClicked(result['field_audio'])"><span class="ms-Button-icon"><i class="ms-Icon ms-Icon--play"></i></span> <span class=" ms-Button-label">福州鼓楼音</span> </button>
+        </div>
     </div>
-
-    <div ng-show="result['field_metaphor'].length>0">
-        <div class="charsymbol">寓</div>
-        <span class="ms-font-l">{{result['field_metaphor']}}</span>
-    </div>
+    <div id="detailsWrapper">
+        <p><div ng-show="result['field_notes'].length>0">
+            <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter charsymbol">案</span>
+            <span class="ms-font-l">{{result['field_notes']}}</span>
+        </div></p>
+        <p>
+        <div ng-show="result['field_metaphor'].length>0">
+            <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter charsymbol">寓</span>
+            <span class="ms-font-l">{{result['field_metaphor']}}</span>
+        </div>
+        </p>
     
-    <h2 class="ms-font-xl ms-fontWeight-semibold">单字注释：</h2>
-    <ul class="ms-font-l">
-        <li ng-repeat="item in result['field_annotations']">{{item["text"]}}: {{item["explanation"]}}</li>
-    </ul>
-    <div>
-        <button ng-repeat="tag in result['field_tags']" class="ms-Button ms-Button--primary">
-            <span class="ms-Button-icon">
-                <i class="ms-Icon ms-Icon--plus"></i>
-            </span> 
-            <span class="ms-Button-label">{{tag}}</span> 
-        </button></div>
-
+        <h2 class="ms-font-xl ms-fontWeight-semibold">单字注释：</h2>
+        <ul class="ms-font-l">
+            <li ng-repeat="item in result['field_annotations']">{{item["text"]}}: {{item["explanation"]}}</li>
+        </ul>
+        <div>
+            <button ng-repeat="tag in result['field_tags']" class="ms-Button ms-Button--primary" ng-click="tagClicked(tag)">
+                <span class="ms-Button-icon">
+                    <i class="ms-Icon ms-Icon--plus"></i>
+                </span> 
+                <span class="ms-Button-label">{{tag}}</span> 
+            </button>
+        </div>
+    </div>
 </div>

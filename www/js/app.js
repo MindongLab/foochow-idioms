@@ -23,6 +23,8 @@
             function getIdiomsByTag(tagName) {
                 return $q.when($http.get(SERVER_URL+'/tag/'+tagName).then(function(r){
                     return r.data;
+                }).catch(function() {
+                    return $q.reject('e');
                 }));
             }
             
@@ -45,12 +47,23 @@
                     console.log('mainCtrl: getAllIdioms failed.');
                 });
                 
-            }
+            };
             
-            //Listen on viewChanged event
-            var unbind = $rootScope.$on('viewChanged', function(){
-                if ($rootScope._query) {
-                    dataService.getIdiomByText($rootScope._query).then(function(r){
+            $scope.tagClicked = function(tagName){
+                $rootScope.$emit("switchToTag",{'tag':tagName});
+            };
+            
+            $scope.playButtonClicked = function(filename){
+                var uri = 'audio/'+filename.replace('.wma','.mp3')
+                var sound = new Howl({
+                    urls:[uri]
+                }).play();
+            };
+            
+            //Listen on switchToIdiom event
+            var unbind = $rootScope.$on('switchToIdiom', function(e,args){
+                if (args.text) {
+                    dataService.getIdiomByText(args.text).then(function(r){
                         $scope.result=r;
                         $scope.detailMode=true;
                     }).catch(function(){
@@ -68,11 +81,28 @@
             
             $scope.listItemClicked= function(text){
                 $rootScope._query=text;
-                $rootScope.$emit("viewChanged");
+                $rootScope.$emit("switchToIdiom", {'text':text});
             }
             
             dataService.getAllIdioms().then(function(r){
                 $scope.list=r;
             })
+            
+            var unbind = $rootScope.$on("switchToTag", function(e,args) {
+                if (args.tag)
+                {
+                    dataService.getIdiomsByTag(args.tag).then(function(r){
+                        $scope.list=r;
+                    })
+                }
+            })
+            
+            $scope.$on('$destroy', unbind);
+        }])
+    
+        .controller('headerCtrl', ['$scope', '$rootScope', function($scope,$rootScope){
+            $scope.homeClicked = function(){
+                $rootScope.$emit('')
+            }
         }]);
 })();

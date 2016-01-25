@@ -6,10 +6,8 @@
         <link href="css/index.css" type="text/css" rel="stylesheet" />  
     </head>
     <body ng-app="app">
-        <div id="headerBar" class="ms-bgColor-themeTertiary">
-            <div id="logoRegion"  class="ms-bgColor-themePrimary">
-                <div class="ms-font-xxl ms-fontColor-themeLighter">福州话熟语大全</div>
-            </div>
+        <div ng-controller="headerCtrl" id="headerBar" class="ms-bgColor-themeTertiary" ng-include="'template/header.tpl.html'">
+            
         </div>
         <div id="mainContainer">
             <div id="sideBar" ng-controller="sidebarCtrl">
@@ -21,6 +19,7 @@
                 <div ng-include=" detailMode && 'template/showDetails.tpl.html' || 'template/welcome.tpl.html' "></div>
             </div>
         </div>
+        <script src="vendor/howlerjs/howler.js"></script>
         <script src="vendor/angular/angular.js"></script>
         <script src="js/utils.js"></script>
         <script src="js/app.js"></script>
