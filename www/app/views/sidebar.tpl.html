@@ -1,12 +1,15 @@
     <div class="ms-SearchBox" ng-init="init()">
       <input class="ms-SearchBox-field SearchBox" ng-model="filterString">
-      <label class="ms-SearchBox-label"><i class="ms-SearchBox-icon ms-Icon ms-Icon--search"></i>Search</label>
+      <label class="ms-SearchBox-label"><i class="ms-SearchBox-icon ms-Icon ms-Icon--search"></i>搜索</label>
       <button class="ms-SearchBox-closeButton"><i class="ms-Icon ms-Icon--x"></i></button>
     </div>
 
 <ul class="ms-List" style="height:90%; overflow-y:auto">
-<div ng-repeat="item in list | filter:filterString" class="cListItem is-unseen is-selectable" ng-click="listItemClicked(item)">
+<div ng-repeat="item in filteredList = (list | filter:filterString)" class="cListItem is-selectable" ng-click="listItemClicked(item)">
   <span class="cListItem-primaryText ms-Font-xl">{{item}}</span>
 </div>
+    
+<div ng-show="loaded && filteredList.length==0" class="ms-Font-xl">没有符合条件的结果</div>
 
+    
 </ul>

@@ -2,7 +2,7 @@
     "use strict";
     angular.module('app').controller('sidebarCtrl', ['$scope', '$rootScope', 'DataService', function ($scope, $rootScope, dataService) {
         $scope.list = [];
-        
+        $scope.loaded = false;
         
         $scope.init = function () {
             $(".ms-SearchBox").SearchBox();
@@ -15,6 +15,7 @@
 
         dataService.getAllIdioms().then(function (r) {
             $scope.list = r;
+            $scope.loaded = true;
         });
 
         var unbind = $rootScope.$on("switchToTag", function (e, args) {

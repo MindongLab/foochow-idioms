@@ -14,4 +14,4 @@ Foochow idioms and proverbs, with pronunciation and detailed explanations.
 * Python (Flask)
 
 ### Data Source
-  *  《福州方言熟语歌谣》，陈泽平，1998，福建人民出版社
+  *  《福州方言熟语歌谣》，陈泽平，1998，福建人民出版社 [经作者授权使用]
