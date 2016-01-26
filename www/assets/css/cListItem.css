@@ -1,0 +1,54 @@
+
+.cListItem {
+  color: #333333;
+  font-family: 'Segoe UI Regular WestEuropean', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  *zoom: 1;
+  padding: 9px 28px 3px;
+  position: relative;
+}
+
+.cListItem:before,
+.cListItem:after {
+  display: table;
+  content: '';
+  line-height: 0;
+}
+
+.cListItem:after {
+  clear: both;
+}
+
+
+.cListItem-primaryText {
+  display: block;
+  color: #212121;
+  font-family: 'Segoe UI Semilight WestEuropean', 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+  font-size: 21px;
+  padding-right: 10px;
+  position: relative;
+  top: -4px;
+}
+
+
+.cListItem.is-unseen:after {
+  border-right: 10px solid transparent;
+  border-top: 10px solid #0078d7;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+
+
+.cListItem.is-selectable:hover {
+  background-color: #eaeaea;
+  cursor: pointer;
+  outline: 1px solid transparent;
+}
+

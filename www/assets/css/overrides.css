@@ -1,0 +1,3 @@
+.ms-ListItem.is-selectable:hover:before {
+    display:none;
+}

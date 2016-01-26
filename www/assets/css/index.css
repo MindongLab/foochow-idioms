@@ -41,14 +41,19 @@ body{
     width: 100%;
 }
 
+/* Sidebar */
 #sideBar{
     position: absolute;
     top:0px;
     left:0px;
     bottom:0px;
     width:300px;
-    background-color: bisque;
-    overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x:hidden;
+}
+
+.SearchBox {
+     width:300px;
 }
 
 #mainPane{
