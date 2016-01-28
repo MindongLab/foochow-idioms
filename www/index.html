@@ -7,12 +7,13 @@
         <link href="assets/css/index.css" type="text/css" rel="stylesheet" /> 
         <link href="assets/css/index.mobile.css" type="text/css" rel="stylesheet" />
         <link href="assets/css/overrides.css" type="text/css" rel="stylesheet" />
+        <script src="assets/vendor/angular/angular.js"></script>
     </head>
     <body ng-app="app">
-        <div ng-controller="headerCtrl" id="headerBar" class="ms-bgColor-themeTertiary" ng-include="'app/views/header.tpl.html'">
+        <div ng-cloak ng-controller="headerCtrl" id="headerBar" class="ms-bgColor-themeTertiary" ng-include="'app/views/header.tpl.html'">
             
         </div>
-        <div id="mainContainer">
+        <div id="mainContainer" ng-cloak>
             <div id="sideBar" ng-controller="sidebarCtrl" class="ms-bgColor-themeLight sideBarHide" ng-include="'app/views/sidebar.tpl.html'" >
             </div>
             <div id="mainPane" ng-controller="mainCtrl">          
@@ -21,7 +22,7 @@
         </div>
         
         <script src="assets/vendor/howlerjs/howler.js"></script>
-        <script src="assets/vendor/angular/angular.js"></script>
+        
         <script src="assets/vendor/jquery/jquery-1.12.0.js"></script>
         <script src="assets/vendor/fabric/components/SearchBox/Jquery.SearchBox.js"></script>
         <script src='assets/vendor/fabric/components/CommandBar/Jquery.CommandBar.js'></script>

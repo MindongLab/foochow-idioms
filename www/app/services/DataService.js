@@ -1,7 +1,6 @@
 (function () {
     "use strict";
-    angular.module('app').factory('DataService', ['$http', '$q', function ($http, $q) {
-        var SERVER_URL = "http://127.0.0.1:5000/api";
+    angular.module('app').factory('DataService', ['$http', '$q',"SERVER_API_URL",function ($http, $q, SERVER_API_URL) {
         return {
             getAllIdioms: getAllIdioms,
             getIdiomsByTag: getIdiomsByTag,
@@ -9,7 +8,7 @@
         };
 
         function getAllIdioms() {
-            return $q.when($http.get(SERVER_URL + '/all/').then(function (r) {
+            return $q.when($http.get(SERVER_API_URL + '/all/').then(function (r) {
                 return r.data;
             }).catch(function () {
                 console.log('DataService: Error in getAllIdioms()');
@@ -19,7 +18,7 @@
         }
 
         function getIdiomsByTag(tagName) {
-            return $q.when($http.get(SERVER_URL + '/tag/' + tagName).then(function (r) {
+            return $q.when($http.get(SERVER_API_URL + '/tag/' + tagName).then(function (r) {
                 return r.data;
             }).catch(function () {
                 return $q.reject('e');
@@ -27,7 +26,7 @@
         }
 
         function getIdiomByText(text) {
-            return $q.when($http.get(SERVER_URL + '/sentence/' + text).then(function (r) {
+            return $q.when($http.get(SERVER_API_URL + '/sentence/' + text).then(function (r) {
                 return r.data;
             }).catch(function () {
                 return $q.reject('e');

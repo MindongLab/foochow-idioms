@@ -8,7 +8,7 @@
 <div ng-repeat="item in filteredList = (list | filter:filterString)" class="cListItem is-selectable" ng-click="listItemClicked(item)">
   <span class="cListItem-primaryText ms-Font-xl">{{item}}</span>
 </div>
-    
+    <div ng-show="loading" class="ms-Spinner"></div>
 <div ng-show="loaded && filteredList.length==0" class="ms-Font-xl">没有符合条件的结果</div>
 
     

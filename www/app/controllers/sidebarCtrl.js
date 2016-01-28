@@ -4,7 +4,7 @@
         var hideSidebar = function() {
             $("#sideBar").addClass("sideBarHide");
         };
-        
+        $scope.loading=false;
         $scope.list = [];
         $scope.loaded = false;
         //Only applicable in mobile view
@@ -20,16 +20,20 @@
             $rootScope.$emit("switchToIdiom", {'text': text});
             $rootScope.$emit("toggleSidebar", {'state':false})
         };
-
+        
+        $scope.loading=true;
         dataService.getAllIdioms().then(function (r) {
             $scope.list = r;
             $scope.loaded = true;
+            $scope.loading= false;
         });
 
         var unbind = $rootScope.$on("switchToTag", function (e, args) {
             if (args && args.tag) {
+                $scope.loading=true;
                 dataService.getIdiomsByTag(args.tag).then(function (r) {
                     $scope.list = r;
+                    $scope.loading= false;
                 });
             }
         });

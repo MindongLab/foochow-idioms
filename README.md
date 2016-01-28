@@ -13,5 +13,11 @@ Foochow idioms and proverbs, with pronunciation and detailed explanations.
 * MongoDB
 * Python (Flask)
 
+### Roadmap
+* 生僻字动态组字 Kage Engine / IDS
+* Share to social media
+* Generate share image
+* URL
+
 ### Data Source
   *  《福州方言熟语歌谣》，陈泽平，1998，福建人民出版社 [经作者授权使用]

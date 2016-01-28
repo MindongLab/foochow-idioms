@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    angular.module('app').controller('mainCtrl', ['$scope', '$rootScope', 'DataService', function ($scope, $rootScope, dataService) {
+    angular.module('app').controller('mainCtrl', ['$scope', '$rootScope', 'DataService', "SERVER_AUDIO_URL", function ($scope, $rootScope, dataService, SERVER_AUDIO_URL) {
         $scope.result = '';
         $scope.detailMode = false;
         $scope.buttonClicked = function () {
@@ -18,7 +18,7 @@
         };
 
         $scope.playButtonClicked = function (filename) {
-            var uri = 'assets/audio/' + filename.replace('.wma', '.mp3'),
+            var uri = SERVER_AUDIO_URL + filename.replace('.wma', '.mp3'),
                 sound = new Howl({
                     urls: [uri]
                 }).play();
