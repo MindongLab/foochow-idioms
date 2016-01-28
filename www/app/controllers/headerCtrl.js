@@ -7,5 +7,9 @@
                 $(".ms-CommandBar").CommandBar();
             }
         };
+        
+        $scope.hamburgerClicked = function () {
+            $rootScope.$emit('toggleSidebar');
+        }
     }]);
 }());

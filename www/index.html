@@ -4,7 +4,8 @@
         <link href="assets/vendor/fabric/fabric.css" type="text/css" rel="stylesheet" />
         <link href="assets/vendor/fabric/fabric.components.css" type="text/css" rel="stylesheet" />
         <link href="assets/css/cListItem.css" type="text/css" rel="stylesheet" />
-        <link href="assets/css/index.css" type="text/css" rel="stylesheet" />  
+        <link href="assets/css/index.css" type="text/css" rel="stylesheet" /> 
+        <link href="assets/css/index.mobile.css" type="text/css" rel="stylesheet" />
         <link href="assets/css/overrides.css" type="text/css" rel="stylesheet" />
     </head>
     <body ng-app="app">
@@ -12,7 +13,7 @@
             
         </div>
         <div id="mainContainer">
-            <div id="sideBar" ng-controller="sidebarCtrl" class="ms-bgColor-themeLight" ng-include="'app/views/sidebar.tpl.html'">
+            <div id="sideBar" ng-controller="sidebarCtrl" class="ms-bgColor-themeLight sideBarHide" ng-include="'app/views/sidebar.tpl.html'" >
             </div>
             <div id="mainPane" ng-controller="mainCtrl">          
                 <div ng-include=" detailMode && 'app/views/showDetails.tpl.html' || 'app/views/welcome.tpl.html' "></div>
