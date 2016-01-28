@@ -7,14 +7,14 @@
         </div>
     </div>
     <div id="detailsWrapper">
+        <div ng-show="result['field_metaphor'].length>0">
+            <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter charsymbol">喻</span>
+            <span class="ms-font-l">{{result['field_metaphor']}}</span>
+        </div>
+        <p></p>
         <div ng-show="result['field_notes'].length>0">
             <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter charsymbol">案</span>
             <span class="ms-font-l">{{result['field_notes']}}</span>
-        </div>
-        <p></p>
-        <div ng-show="result['field_metaphor'].length>0">
-            <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter charsymbol">寓</span>
-            <span class="ms-font-l">{{result['field_metaphor']}}</span>
         </div>
         
     
