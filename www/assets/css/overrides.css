@@ -1,3 +1,17 @@
 .ms-ListItem.is-selectable:hover:before {
     display:none;
 }
+
+.ms-CommandBar-mainArea {
+  padding-left: 0px;
+}
+
+.ms-CommandBarItem-icon {
+    line-height: 39px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .ms-CommandBar-mainArea {
+    padding-left: 0px;
+  }
+}
