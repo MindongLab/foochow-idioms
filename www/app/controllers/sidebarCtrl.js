@@ -9,7 +9,7 @@
         $scope.loaded = false;
         //Only applicable in mobile view
         $scope.isOpen = false;
-        
+        $scope.tagName = "";
         
         $scope.init = function () {
             $(".ms-SearchBox").SearchBox();
@@ -21,18 +21,28 @@
             $rootScope.$emit("toggleSidebar", {'state':false})
         };
         
-        $scope.loading=true;
-        dataService.getAllIdioms().then(function (r) {
-            $scope.list = r;
-            $scope.loaded = true;
-            $scope.loading= false;
-        });
-
+        $scope.removeTagClicked = function () {
+            $scope.tagName="";
+            loadAll();
+        }
+        
+        function loadAll() {
+            $scope.loading=true;
+            dataService.getAllIdioms().then(function (r) {
+                $scope.list = r;
+                $scope.loaded = true;
+                $scope.loading= false;
+            });
+        }
+        
+        loadAll();
+        
         var unbind = $rootScope.$on("switchToTag", function (e, args) {
             if (args && args.tag) {
                 $scope.loading=true;
                 dataService.getIdiomsByTag(args.tag).then(function (r) {
                     $scope.list = r;
+                    $scope.tagName =  args.tag;
                     $scope.loading= false;
                 });
             }

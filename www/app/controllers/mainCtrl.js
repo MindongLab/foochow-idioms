@@ -15,6 +15,7 @@
 
         $scope.tagClicked = function (tagName) {
             $rootScope.$emit("switchToTag", {'tag': tagName});
+            $rootScope.$emit("toggleSidebar", {'state': true});
         };
 
         $scope.playButtonClicked = function (filename) {
@@ -34,6 +35,14 @@
                     console.log('mainCtrl: view change failed.');
                 });
             }
+        });
+
+        $scope.$on('$destroy', unbind);
+
+        //Listen on switchToHome event
+        unbind = $rootScope.$on('switchToHome', function (e, args) {
+            $scope.detailMode = false;
+            $rootScope.$emit('toggleSidebar', {'state':false});
         });
 
         $scope.$on('$destroy', unbind);

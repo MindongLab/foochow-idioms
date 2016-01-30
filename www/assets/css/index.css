@@ -59,7 +59,7 @@ body{
 
 
 .SearchBox {
-    width:300px;
+    width:100%;
 }
 
 .resultList {
@@ -67,6 +67,38 @@ body{
     top: 32px;
     bottom: 0px;
     overflow-y: auto;
+    width: 100%;
+}
+
+
+.tagButton {
+    display:inline-block;
+    position:relative;
+    background-color: #EAEAEA;
+    height:32px;
+}
+
+.tagButton-hide {
+    display:none;
+}
+
+.tagButton-text{
+    padding-right:20px;
+    padding-left:3px;
+    
+    line-height: 32px;
+}
+.tagButton-removeButton {
+    height:22px;
+    position: absolute;
+    top:0px;
+    right:0px;
+    padding-top:10px;
+    padding-left:2px;
+}
+
+.tagButton-removeButton:hover {
+    background-color:#C8C8C8;
 }
 
 #mainPane{
