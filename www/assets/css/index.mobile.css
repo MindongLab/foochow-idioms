@@ -23,8 +23,11 @@
     #sideBar.sideBarHide  {
         display: none;
     }
+    .filterSearch {
+        width:100%;
+    }
     .SearchBox {
-        margin: 0 auto;
+        width:100%
     }
     #mainPane {
         left:0px;

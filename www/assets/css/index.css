@@ -62,6 +62,13 @@ body{
     width:300px;
 }
 
+.resultList {
+    position: absolute;
+    top: 32px;
+    bottom: 0px;
+    overflow-y: auto;
+}
+
 #mainPane{
     position: absolute;
     top:0px;
