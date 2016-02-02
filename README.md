@@ -2,6 +2,7 @@
 
 Foochow idioms and proverbs, with pronunciation and detailed explanations.
 
+![Screenshot](Screenshot.png)
 ### Technology Stack
 
 #### Front end
