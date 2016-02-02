@@ -9,6 +9,7 @@
         <link href="assets/css/index.mobile.css" type="text/css" rel="stylesheet" />
         <link href="assets/css/overrides.css" type="text/css" rel="stylesheet" />
         <script src="assets/vendor/angular/angular.js"></script>
+        <script src="assets/vendor/angular/angular-route.min.js"></script>
         <title>福州话熟语大全</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,8 +23,9 @@
         <div id="mainContainer" ng-cloak>
             <div id="sideBar" ng-controller="sidebarCtrl" class="ms-bgColor-themeLight sideBarHide" ng-include="'app/views/sidebar.tpl.html'" >
             </div>
-            <div id="mainPane" ng-controller="mainCtrl">          
-                <div ng-include=" detailMode && 'app/views/showDetails.tpl.html' || 'app/views/welcome.tpl.html' "></div>
+            <div id="mainPane" ng-controller="mainCtrl">
+                <a ng-href="#/showDetails">click</a>          
+                <div ng-view></div>
             </div>
         </div>
         

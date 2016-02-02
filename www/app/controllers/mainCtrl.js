@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    angular.module('app').controller('mainCtrl', ['$scope', '$rootScope', 'DataService', "SERVER_AUDIO_URL", function ($scope, $rootScope, dataService, SERVER_AUDIO_URL) {
+    angular.module('app').controller('mainCtrl', ['$scope', '$rootScope','$location', 'DataService', "SERVER_AUDIO_URL", function ($scope, $rootScope,$location, dataService, SERVER_AUDIO_URL) {
         $scope.result = '';
         $scope.detailMode = false;
         $scope.buttonClicked = function () {
@@ -31,6 +31,7 @@
                 dataService.getIdiomByText(args.text).then(function (r) {
                     $scope.result = r;
                     $scope.detailMode = true;
+                    $location.path('/showDetails');
                 }).catch(function () {
                     console.log('mainCtrl: view change failed.');
                 });
@@ -46,6 +47,6 @@
         });
 
         $scope.$on('$destroy', unbind);
-
+        
     }]);
 }());
