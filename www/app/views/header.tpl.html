@@ -12,9 +12,14 @@
                     <a class="ms-CommandBarItem-link" tabindex="1"><span class="ms-CommandBarItem-icon ms-Icon ms-Icon--star"></span> <span class="ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular">收藏夹</span></a>
                 </div>
             </div>
-            <div class="ms-CommandBarItem">
+            <div class="ms-CommandBarItem" ng-click="aboutClicked()">
                 <div class="ms-CommandBarItem-linkWrapper">
-                    <a class="ms-CommandBarItem-link" tabindex="1"><span class="ms-CommandBarItem-icon ms-Icon ms-Icon--question"></span> <span class="ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular">关于</span></a>
+                    <a class="ms-CommandBarItem-link" tabindex="1"><span class="ms-CommandBarItem-icon ms-Icon ms-Icon--chevronRight"></span> <span class="ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular">关于</span></a>
+                </div>
+            </div>
+            <div class="ms-CommandBarItem" ng-click="helpClicked()">
+                <div class="ms-CommandBarItem-linkWrapper">
+                    <a class="ms-CommandBarItem-link" tabindex="1"><span class="ms-CommandBarItem-icon ms-Icon ms-Icon--question"></span> <span class="ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular">帮助</span></a>
                 </div>
             </div>
         </div>

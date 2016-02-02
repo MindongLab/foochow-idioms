@@ -6,12 +6,20 @@
 
         };
         
+        $scope.aboutClicked = function () {
+            $rootScope.$emit('switchToAbout');    
+        };
+        
+        $scope.helpClicked = function () {
+            $rootScope.$emit('switchToHelp');    
+        };
+        
         $scope.init = function () {
             $(".ms-CommandBar").CommandBar();
         };     
         
         $scope.hamburgerClicked = function () {
             $rootScope.$emit('toggleSidebar');
-        };
+        };      
     }]);
 }(jQuery));

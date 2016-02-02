@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    angular.module('app').controller('mainCtrl', ['$scope', '$rootScope', 'DataService', "SERVER_AUDIO_URL", function ($scope, $rootScope, dataService, SERVER_AUDIO_URL) {
+    angular.module('app').controller('mainCtrl', ['$scope', '$rootScope','$location', 'DataService', "SERVER_AUDIO_URL", function ($scope, $rootScope,$location, dataService, SERVER_AUDIO_URL) {
         $scope.result = '';
         $scope.detailMode = false;
         $scope.buttonClicked = function () {
@@ -31,6 +31,7 @@
                 dataService.getIdiomByText(args.text).then(function (r) {
                     $scope.result = r;
                     $scope.detailMode = true;
+                    $location.path('/showDetails');
                 }).catch(function () {
                     console.log('mainCtrl: view change failed.');
                 });
@@ -42,10 +43,25 @@
         //Listen on switchToHome event
         unbind = $rootScope.$on('switchToHome', function (e, args) {
             $scope.detailMode = false;
+            $location.path('/');
             $rootScope.$emit('toggleSidebar', {'state':false});
         });
 
         $scope.$on('$destroy', unbind);
+        //Listen on switchToAbout event
+        unbind = $rootScope.$on('switchToAbout', function (e, args) {
+            $location.path('/about');
+            $rootScope.$emit('toggleSidebar', {'state':false});
+        });
 
+        $scope.$on('$destroy', unbind);
+        //Listen on switchToHelp event
+        unbind = $rootScope.$on('switchToHelp', function (e, args) {
+            $location.path('/help');
+            $rootScope.$emit('toggleSidebar', {'state':false});
+        });
+
+        $scope.$on('$destroy', unbind);
+        
     }]);
 }());
