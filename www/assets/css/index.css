@@ -83,18 +83,23 @@ body{
 }
 
 .tagButton-text{
-    padding-right:20px;
+    padding-right:35px;
     padding-left:3px;
-    
+    text-overflow: ellipsis;
+    white-space: nowrap;
     line-height: 32px;
 }
 .tagButton-removeButton {
-    height:22px;
+    height:32px;
+    width: 32px;
     position: absolute;
     top:0px;
     right:0px;
-    padding-top:10px;
-    padding-left:2px;
+    text-align: center;
+}
+
+.tagButton-removeButton > i {
+    line-height: 32px;
 }
 
 .tagButton-removeButton:hover {
