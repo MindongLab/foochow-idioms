@@ -13,7 +13,15 @@
             .when('/showDetails', {  
                 templateUrl: 'app/views/showDetails.tpl.html',  
                 controller: 'mainCtrl'  
-            })  
+            })
+            .when('/help', {  
+                templateUrl: 'app/views/help.tpl.html',  
+                controller: 'mainCtrl'  
+            })
+            .when('/about', {  
+                templateUrl: 'app/views/about.tpl.html',  
+                controller: 'mainCtrl'  
+            })      
             .otherwise({  
                 redirectTo: '/'  
             });  

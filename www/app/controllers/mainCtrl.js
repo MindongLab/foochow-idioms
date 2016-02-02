@@ -43,6 +43,21 @@
         //Listen on switchToHome event
         unbind = $rootScope.$on('switchToHome', function (e, args) {
             $scope.detailMode = false;
+            $location.path('/');
+            $rootScope.$emit('toggleSidebar', {'state':false});
+        });
+
+        $scope.$on('$destroy', unbind);
+        //Listen on switchToAbout event
+        unbind = $rootScope.$on('switchToAbout', function (e, args) {
+            $location.path('/about');
+            $rootScope.$emit('toggleSidebar', {'state':false});
+        });
+
+        $scope.$on('$destroy', unbind);
+        //Listen on switchToHelp event
+        unbind = $rootScope.$on('switchToHelp', function (e, args) {
+            $location.path('/help');
             $rootScope.$emit('toggleSidebar', {'state':false});
         });
 
