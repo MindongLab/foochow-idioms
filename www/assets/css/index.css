@@ -116,6 +116,33 @@ body{
     overflow-y: auto;
 }
 
+.imgLogoWrapper {
+    text-align: center;
+}
+
+.imgLogo {
+    width: 60%;
+    max-width: 310px;
+    display:block;
+    margin: 0 auto;
+}
+
+.featureButton {
+    padding-top:10px;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.featureButton-icon {
+    font-size: 32px;
+    line-height: 32px;
+}
+
+.featureButton-text {
+    line-height: 35px;
+}
+
 #contentWrapper{
     padding-left: 20px;
     padding-right: 30px;

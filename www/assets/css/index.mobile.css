@@ -12,13 +12,14 @@
         height:40px;
         padding-top: 5px;
         padding-left:5px;
+        cursor: pointer;
     }
     #commandRegion{
         left: 40px;   
     }
     #sideBar {
         z-index:2;
-        width:100%;
+        width:300px;
     }
     #sideBar.sideBarHide  {
         display: none;
@@ -30,6 +31,11 @@
     #mainPane {
         left:0px;
         z-index:1;
+    }
+    
+    .logoText-font-mobile {
+        font-size: 25px;
+        font-size: 8vw;
     }
     
     .slideRightIn40 {
@@ -100,4 +106,10 @@
       }
     }
 
+}
+
+@media (max-width:600px) {
+    #sideBar {
+        width: 100%;
+    }
 }
