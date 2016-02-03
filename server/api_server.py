@@ -11,6 +11,7 @@ cTag = db['entity_tag']
 cAudio = db['entity_audio']
 cSpeaker = db['entity_speaker']
 cSource = db['entity_source']
+cGlyph = db['entity_glyph']
 
 app = Flask(__name__)
 
@@ -93,6 +94,19 @@ def get_sentence(sentence):
             return r
         else:
             return JSONEncoder(ensure_ascii=False).encode(tmp)
-        
+ 
+@app.route('/api/glyph/<path:ids>')
+def get_glyph(ids):
+    cursor = cGlyph.find({'field_ids':ids})
+    if (cursor.count()==0):
+        r= make_response('Not Found',404)
+        r.headers.add('Access-Control-Allow-Origin', '*')
+        return r
+    else:
+        r = make_response(JSONEncoder(ensure_ascii=False).encode(cursor[0]))
+        r.mimetype="application/json"
+        r.headers.add('Access-Control-Allow-Origin', '*')
+        return r
+
 if __name__ == '__main__':
     app.run(debug=True)
