@@ -7,7 +7,8 @@
                 case 1:  //List All
                     //show sideBar
                     $rootScope.$emit("toggleSidebar", {'state':true});
-                    //TODO: remove tag filter
+                    //remove tag filter
+                    $rootScope.$emit("switchToTag", {'tag':""});
                     break;
                 case 2:
                     break;
