@@ -1,8 +1,7 @@
 (function () {
     "use strict";
-    angular.module('app').controller('detailsCtrl', ['$scope', '$rootScope', '$location', '$routeParams','DataService', "SERVER_AUDIO_URL", function ($scope, $rootScope, $location, $routeParams, dataService, SERVER_AUDIO_URL) {
+    angular.module('app').controller('detailsCtrl', ['$q','$scope', '$rootScope', '$location', '$routeParams', '$sce', 'DataService', "KageService", "SERVER_AUDIO_URL", function ($q, $scope, $rootScope, $location, $routeParams,$sce, dataService, kageService, SERVER_AUDIO_URL) {
         
-        $scope.result = '';
         $scope.highlight = [];
         $scope.highlightAnno = [];
         console.log('detailsCtrl $scope init');
@@ -20,19 +19,39 @@
                     urls: [uri]
                 }).play();
         };
-
         //loadIdiom
         function switchToIdiom (text) {
             if (text) {
                 dataService.getIdiomByText(text).then(function (r) {
                     $scope.result = r;
-                    $scope.field_text = DictUtils.getChars(r['field_text']);
+                    var glyphs = DictUtils.getChars(r['field_text']); 
+                    var i;
+                    var list=[];
+                    for (i=0; i<glyphs.length; ++i) {
+                        list[i]={};
+                        list[i]['text']=glyphs[i];
+                    }
+                    $scope.field_text = list;
+                    for (i=0; i<glyphs.length; ++i) {
+                        if ((glyphs[i][0]=='{' && glyphs[i][glyphs[i].length-1]=="}")
+                            || DictUtils.extendedGlyphs.indexOf(glyphs[i]) != -1) {
+                            kageService.getGlypeImage(glyphs[i],200,i).then(function (r) {
+                                console.log(r.id);
+                                $scope.field_text[r.id]['imgsrc'] = r.data;
+                            })
+                        }
+                    }
+                    
                 }).catch(function () {
                     console.log('detailsCtrl: view change failed.');
                 });
             }
         };
         
+        function getGlypeImage(str) {
+            
+            
+        }
         $scope.highOn = function (annoId) {
             var indices = $scope.result['field_annotations'][annoId]['indices'];
             var i;
