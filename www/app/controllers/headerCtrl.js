@@ -20,6 +20,8 @@
         
         $scope.hamburgerClicked = function () {
             $rootScope.$emit('toggleSidebar');
-        };      
+        }; 
+        
+      //  $scope.init();
     }]);
 }(jQuery));

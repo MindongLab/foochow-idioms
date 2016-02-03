@@ -30,6 +30,7 @@
             if (args.text) {
                 dataService.getIdiomByText(args.text).then(function (r) {
                     $scope.result = r;
+                    $scope.field_text = DictUtils.getChars(r['field_text']);
                     $scope.detailMode = true;
                     $location.path('/showDetails');
                 }).catch(function () {
