@@ -3,6 +3,8 @@
     angular.module('app').controller('detailsCtrl', ['$scope', '$rootScope', '$location', '$routeParams','DataService', "SERVER_AUDIO_URL", function ($scope, $rootScope, $location, $routeParams, dataService, SERVER_AUDIO_URL) {
         
         $scope.result = '';
+        $scope.highlight = [];
+        $scope.highlightAnno = [];
         console.log('detailsCtrl $scope init');
         console.log($routeParams);
         switchToIdiom($routeParams.idiomtext);
@@ -30,29 +32,24 @@
                 });
             }
         };
-
-        //Listen on switchToHome event
-        var unbind = $rootScope.$on('switchToHome', function (e, args) {
-            $scope.detailMode = false;
-            $location.path('/');
-            $rootScope.$emit('toggleSidebar', {'state':false});
-        });
-
-        $scope.$on('$destroy', unbind);
-        //Listen on switchToAbout event
-        unbind = $rootScope.$on('switchToAbout', function (e, args) {
-            $location.path('/about');
-            $rootScope.$emit('toggleSidebar', {'state':false});
-        });
-
-        $scope.$on('$destroy', unbind);
-        //Listen on switchToHelp event
-        unbind = $rootScope.$on('switchToHelp', function (e, args) {
-            $location.path('/help');
-            $rootScope.$emit('toggleSidebar', {'state':false});
-        });
-
-        $scope.$on('$destroy', unbind);
         
+        $scope.highOn = function (annoId) {
+            var indices = $scope.result['field_annotations'][annoId]['indices'];
+            var i;
+            for (i=0; i<indices.length; ++i) {
+                $scope.highlight[indices[i]]=true;
+            }
+            $scope.highlightAnno[annoId]=true;
+        };
+        
+        $scope.highOff = function (annoId) {
+            var indices = $scope.result['field_annotations'][annoId]['indices'];
+            var i;
+            for (i=0; i<indices.length; ++i) {
+                $scope.highlight[indices[i]]=false;
+            }
+            $scope.highlightAnno[annoId]=false;
+        };
+
     }]);
 }());

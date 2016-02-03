@@ -19,7 +19,7 @@
             $rootScope._query = text;
             //$rootScope.$emit("switchToIdiom", {'text': text});
             $location.path('/idiom/'+text);
-            $rootScope.$emit("toggleSidebar", {'state':false})
+            $rootScope.$emit("toggleSidebar", {'state':false});
         };
         
         $scope.removeTagClicked = function () {

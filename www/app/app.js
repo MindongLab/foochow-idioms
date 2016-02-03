@@ -8,7 +8,7 @@
         $routeProvider  
             .when('/', {  
                 templateUrl: 'app/views/welcome.tpl.html',  
-                //controller: 'mainCtrl'  
+                controller: 'homeCtrl'  
             })  
             .when('/idiom/:idiomtext*', {  
                 templateUrl: 'app/views/showDetails.tpl.html',  

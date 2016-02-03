@@ -168,6 +168,10 @@ body{
     padding-left:20px;
 }
 
+.highlight {
+    background-color: #C7E0F4;
+}
+
 .playButton {
     font-size:32px;
 }
