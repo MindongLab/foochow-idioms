@@ -1,17 +1,16 @@
 (function ($) {
     "use strict";
-    angular.module('app').controller('headerCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
+    angular.module('app').controller('headerCtrl', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
         $scope.homeClicked = function () {
-            $rootScope.$emit('switchToHome');
-
+            $location.path('/home');
         };
         
         $scope.aboutClicked = function () {
-            $rootScope.$emit('switchToAbout');    
+            $location.path('/about');
         };
         
         $scope.helpClicked = function () {
-            $rootScope.$emit('switchToHelp');    
+            $location.path('/help');
         };
         
         $scope.init = function () {

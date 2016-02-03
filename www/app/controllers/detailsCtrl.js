@@ -1,17 +1,11 @@
 (function () {
     "use strict";
-    angular.module('app').controller('mainCtrl', ['$scope', '$rootScope','$location', 'DataService', "SERVER_AUDIO_URL", function ($scope, $rootScope,$location, dataService, SERVER_AUDIO_URL) {
+    angular.module('app').controller('detailsCtrl', ['$scope', '$rootScope', '$location', '$routeParams','DataService', "SERVER_AUDIO_URL", function ($scope, $rootScope, $location, $routeParams, dataService, SERVER_AUDIO_URL) {
+        
         $scope.result = '';
-        $scope.detailMode = false;
-        $scope.buttonClicked = function () {
-            $scope.result = 'Working';
-            dataService.getAllIdioms().then(function (r) {
-                $scope.result = r;
-            }).catch(function () {
-                console.log('mainCtrl: getAllIdioms failed.');
-            });
-
-        };
+        console.log('detailsCtrl $scope init');
+        console.log($routeParams);
+        switchToIdiom($routeParams.idiomtext);
 
         $scope.tagClicked = function (tagName) {
             $rootScope.$emit("switchToTag", {'tag': tagName});
@@ -25,24 +19,20 @@
                 }).play();
         };
 
-        //Listen on switchToIdiom event
-        var unbind = $rootScope.$on('switchToIdiom', function (e, args) {
-            if (args.text) {
-                dataService.getIdiomByText(args.text).then(function (r) {
+        //loadIdiom
+        function switchToIdiom (text) {
+            if (text) {
+                dataService.getIdiomByText(text).then(function (r) {
                     $scope.result = r;
                     $scope.field_text = DictUtils.getChars(r['field_text']);
-                    $scope.detailMode = true;
-                    $location.path('/showDetails');
                 }).catch(function () {
-                    console.log('mainCtrl: view change failed.');
+                    console.log('detailsCtrl: view change failed.');
                 });
             }
-        });
-
-        $scope.$on('$destroy', unbind);
+        };
 
         //Listen on switchToHome event
-        unbind = $rootScope.$on('switchToHome', function (e, args) {
+        var unbind = $rootScope.$on('switchToHome', function (e, args) {
             $scope.detailMode = false;
             $location.path('/');
             $rootScope.$emit('toggleSidebar', {'state':false});
