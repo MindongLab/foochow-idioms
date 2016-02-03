@@ -23,7 +23,7 @@
         <div id="mainContainer" ng-cloak>
             <div id="sideBar" ng-controller="sidebarCtrl" class="ms-bgColor-themeLight sideBarHide" ng-include="'app/views/sidebar.tpl.html'" >
             </div>
-            <div id="mainPane" ng-controller="mainCtrl">        
+            <div id="mainPane">        
                 <div ng-view></div>
             </div>
         </div>
@@ -38,8 +38,9 @@
         <script src="app/app.js"></script>
         <script src="app/services/DataService.js"></script>
         <script src="app/controllers/sidebarCtrl.js"></script>
-        <script src="app/controllers/mainCtrl.js"></script>
+        <script src="app/controllers/detailsCtrl.js"></script>
         <script src="app/controllers/headerCtrl.js"></script>
-
+        <script src="app/controllers/homeCtrl.js"></script>
+        <script src="app/js/utils.js"></script>
     </body>
 </html>

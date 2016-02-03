@@ -1,6 +1,6 @@
 (function ($) {
     "use strict";
-    angular.module('app').controller('sidebarCtrl', ['$scope', '$rootScope', 'DataService', function ($scope, $rootScope, dataService) {
+    angular.module('app').controller('sidebarCtrl', ['$scope', '$rootScope', '$location', 'DataService', function ($scope, $rootScope, $location, dataService) {
         var hideSidebar = function() {
             $("#sideBar").addClass("sideBarHide");
         };
@@ -17,8 +17,9 @@
         
         $scope.listItemClicked = function (text) {
             $rootScope._query = text;
-            $rootScope.$emit("switchToIdiom", {'text': text});
-            $rootScope.$emit("toggleSidebar", {'state':false})
+            //$rootScope.$emit("switchToIdiom", {'text': text});
+            $location.path('/idiom/'+text);
+            $rootScope.$emit("toggleSidebar", {'state':false});
         };
         
         $scope.removeTagClicked = function () {

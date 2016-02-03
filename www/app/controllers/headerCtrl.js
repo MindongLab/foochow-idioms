@@ -1,17 +1,19 @@
 (function ($) {
     "use strict";
-    angular.module('app').controller('headerCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
+    angular.module('app').controller('headerCtrl', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
         $scope.homeClicked = function () {
-            $rootScope.$emit('switchToHome');
-
+            $location.path('/');
+            $rootScope.$emit('toggleSidebar', {'state':false});
         };
         
         $scope.aboutClicked = function () {
-            $rootScope.$emit('switchToAbout');    
+            $location.path('/about');
+            $rootScope.$emit('toggleSidebar', {'state':false});
         };
         
         $scope.helpClicked = function () {
-            $rootScope.$emit('switchToHelp');    
+            $location.path('/help');
+            $rootScope.$emit('toggleSidebar', {'state':false});
         };
         
         $scope.init = function () {
@@ -20,6 +22,8 @@
         
         $scope.hamburgerClicked = function () {
             $rootScope.$emit('toggleSidebar');
-        };      
+        }; 
+        
+      //  $scope.init();
     }]);
 }(jQuery));
