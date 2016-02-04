@@ -22,7 +22,7 @@ DictUtils = {};
 (function(){
     "use strict";
     //Glypes that are Unicode extended chars, but are missing in some fonts. (Needs to be replaced by KanjiVG)
-    DictUtils.extendedGlyphs = ['𣍐', '𩩍','𠲥','𢵣','𥻵'];
+    DictUtils.extendedGlyphs = ['𣍐', '𩩍','𠲥','𢵣','𥻵','𥮕'];
     
     //Get chars in a string. Treat IDS as a char.
     DictUtils.getChars = function(str) {
