@@ -1,6 +1,6 @@
 (function ($) {
     "use strict";
-    angular.module('app').controller('sidebarCtrl', ['$scope', '$rootScope', 'DataService', function ($scope, $rootScope, dataService) {
+    angular.module('app').controller('sidebarCtrl', ['$scope', '$rootScope', '$location', 'DataService', function ($scope, $rootScope, $location, dataService) {
         var hideSidebar = function() {
             $("#sideBar").addClass("sideBarHide");
         };
@@ -17,13 +17,28 @@
         
         $scope.listItemClicked = function (text) {
             $rootScope._query = text;
-            $rootScope.$emit("switchToIdiom", {'text': text});
-            $rootScope.$emit("toggleSidebar", {'state':false})
+            //$rootScope.$emit("switchToIdiom", {'text': text});
+            $location.path('/idiom/'+text);
+            $rootScope.$emit("toggleSidebar", {'state':false});
         };
         
         $scope.removeTagClicked = function () {
-            $scope.tagName="";
-            loadAll();
+            switchToTag("");
+        }
+        
+        function switchToTag(tag) {
+            if (tag && tag!='') {
+                $scope.loading = true;
+                dataService.getIdiomsByTag(tag).then(function (r) {
+                    $scope.list = r;
+                    $scope.tagName =  tag;
+                    $scope.loading= false;
+                });
+            } else {
+                $scope.tagName="";
+                loadAll();
+            }
+            
         }
         
         function loadAll() {
@@ -39,12 +54,9 @@
         
         var unbind = $rootScope.$on("switchToTag", function (e, args) {
             if (args && args.tag) {
-                $scope.loading=true;
-                dataService.getIdiomsByTag(args.tag).then(function (r) {
-                    $scope.list = r;
-                    $scope.tagName =  args.tag;
-                    $scope.loading= false;
-                });
+                switchToTag(args.tag);
+            } else {
+                switchToTag("");
             }
         });
 

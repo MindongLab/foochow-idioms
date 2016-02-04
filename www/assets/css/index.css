@@ -83,18 +83,23 @@ body{
 }
 
 .tagButton-text{
-    padding-right:20px;
+    padding-right:35px;
     padding-left:3px;
-    
+    text-overflow: ellipsis;
+    white-space: nowrap;
     line-height: 32px;
 }
 .tagButton-removeButton {
-    height:22px;
+    height:32px;
+    width: 32px;
     position: absolute;
     top:0px;
     right:0px;
-    padding-top:10px;
-    padding-left:2px;
+    text-align: center;
+}
+
+.tagButton-removeButton > i {
+    line-height: 32px;
 }
 
 .tagButton-removeButton:hover {
@@ -109,6 +114,33 @@ body{
     right:0px;
     background-color: white;
     overflow-y: auto;
+}
+
+.imgLogoWrapper {
+    text-align: center;
+}
+
+.imgLogo {
+    width: 60%;
+    max-width: 310px;
+    display:block;
+    margin: 0 auto;
+}
+
+.featureButton {
+    padding-top:10px;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.featureButton-icon {
+    font-size: 32px;
+    line-height: 32px;
+}
+
+.featureButton-text {
+    line-height: 35px;
 }
 
 #contentWrapper{
@@ -134,6 +166,10 @@ body{
 #detailsWrapper{
     margin-top:20px;
     padding-left:20px;
+}
+
+.highlight {
+    background-color: #C7E0F4;
 }
 
 .playButton {
