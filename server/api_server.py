@@ -29,6 +29,13 @@ def queryTag(id):
         return cursor[0]['field_title']
     else:
         return None;
+		
+def querySource(id):
+    cursor = cSource.find({"_id":id})
+    if (cursor.count()):
+        return cursor[0]
+    else:
+        return ""
 
 class JSONEncoder(json.JSONEncoder):
     def default(self, o):
@@ -84,8 +91,12 @@ def get_sentence(sentence):
                 for t in item['field_tags']:
                     col.append(queryTag(t))
                 item['field_tags']=col
+			#Embed field_audio
             if ('field_audio' in item):
                 item['field_audio']=queryAudio(item['field_audio'])
+            #Embed source in field_source.source
+            if (('field_source' in item) and ('source' in item['field_source'])):
+                item['field_source']['source']=querySource(item['field_source']['source'])
             tmp.append(item)
         if (len(tmp)==1):
             r = make_response(JSONEncoder(ensure_ascii=False).encode(tmp[0]))
