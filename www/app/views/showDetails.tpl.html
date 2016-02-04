@@ -1,7 +1,7 @@
 <div id="contentWrapper">
     <div id="detailsHeader">
         <div class="ms-font-su">
-            <span ng-repeat="char in field_text track by $index" ng-class="{highlight: highlight[$index]}"><a ng-hide="char.imgsrc">{{char.text}}</a><img ng-src="{{char.imgsrc}}" height="42" width="42" ng-show="char.imgsrc"/></span>
+            <span ng-repeat="char in field_text track by $index" ng-class="{highlight: highlight[$index]}"><a ng-hide="char.imgsrc">{{char.text}}</a><img ng-src="{{char.imgsrc}}" height="42" width="42" style="position:relative; top:4px" ng-show="char.imgsrc"/></span>
         </div>
         <div>
             <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter playLabel">发音</span>
