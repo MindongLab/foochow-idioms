@@ -23,8 +23,22 @@
         };
         
         $scope.removeTagClicked = function () {
-            $scope.tagName="";
-            loadAll();
+            switchToTag("");
+        }
+        
+        function switchToTag(tag) {
+            if (tag && tag!='') {
+                $scope.loading = true;
+                dataService.getIdiomsByTag(tag).then(function (r) {
+                    $scope.list = r;
+                    $scope.tagName =  tag;
+                    $scope.loading= false;
+                });
+            } else {
+                $scope.tagName="";
+                loadAll();
+            }
+            
         }
         
         function loadAll() {
@@ -40,12 +54,9 @@
         
         var unbind = $rootScope.$on("switchToTag", function (e, args) {
             if (args && args.tag) {
-                $scope.loading=true;
-                dataService.getIdiomsByTag(args.tag).then(function (r) {
-                    $scope.list = r;
-                    $scope.tagName =  args.tag;
-                    $scope.loading= false;
-                });
+                switchToTag(args.tag);
+            } else {
+                switchToTag("");
             }
         });
 

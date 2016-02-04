@@ -34,7 +34,7 @@ DictUtils = {};
                 if (unicodeStr[i]=="}") {
                     tmp+="}";
                     idsMode=false;
-                    outputStr.push(tmp.slice(1,-1));
+                    outputStr.push(tmp);
                     tmp="";
                 } else {
                     tmp+=unicodeStr[i];
@@ -51,6 +51,8 @@ DictUtils = {};
         return outputStr;
     }
     
+    
+
     /*
     DictUtils.upgrade =  function (view,rev) {
         var tmp = { '_id': $scope.current.toString(), 'annotation': [] };

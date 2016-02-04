@@ -1,13 +1,14 @@
 (function () {
     "use strict";
-    angular.module('app').controller('homeCtrl', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
+    angular.module('app').controller('homeCtrl', ['$scope', '$rootScope', '$location', "KageService", function ($scope, $rootScope, $location, kageService) {
         $scope.featureClicked = function (id) {
             switch(id)
             {
                 case 1:  //List All
                     //show sideBar
                     $rootScope.$emit("toggleSidebar", {'state':true});
-                    //TODO: remove tag filter
+                    //remove tag filter
+                    $rootScope.$emit("switchToTag", {'tag':""});
                     break;
                 case 2:
                     break;
@@ -16,6 +17,16 @@
                     $rootScope.$emit("toggleSidebar", {'state':false});
                     break;
             }
+        };
+        
+        $scope.draw = function () {
+            var can = document.createElement('canvas');
+            can.height=300;
+            can.width=300;
+            kageService.getKage("𣍐", can).then(function () {
+                console.log(can.toDataURL());
+            });
+            
         }
         
     }]);

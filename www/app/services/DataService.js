@@ -4,7 +4,8 @@
         return {
             getAllIdioms: getAllIdioms,
             getIdiomsByTag: getIdiomsByTag,
-            getIdiomByText: getIdiomByText
+            getIdiomByText: getIdiomByText,
+            getGlype: getGlyph
         };
 
         function getAllIdioms() {
@@ -19,6 +20,14 @@
 
         function getIdiomsByTag(tagName) {
             return $q.when($http.get(SERVER_API_URL + '/tag/' + tagName).then(function (r) {
+                return r.data;
+            }).catch(function () {
+                return $q.reject('e');
+            }));
+        }
+        
+        function getGlyph(ids) {
+            return $q.when($http.get(SERVER_API_URL + '/glyph/' + ids).then(function (r) {
                 return r.data;
             }).catch(function () {
                 return $q.reject('e');
