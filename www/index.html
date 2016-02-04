@@ -8,6 +8,8 @@
         <link href="assets/css/index.css" type="text/css" rel="stylesheet" /> 
         <link href="assets/css/index.mobile.css" type="text/css" rel="stylesheet" />
         <link href="assets/css/overrides.css" type="text/css" rel="stylesheet" />
+        
+      
         <script src="assets/vendor/angular/angular.js"></script>
         <script src="assets/vendor/angular/angular-route.min.js"></script>
         <title>福州话熟语大全</title>
@@ -27,12 +29,60 @@
                 <div ng-view></div>
             </div>
         </div>
-        
+
+
+
+ <div class="ms-Panel">
+  <div class="ms-Overlay ms-Overlay--dark ms-PanelAction-close"></div>
+  <div class="ms-Panel-main">
+        <div class="ms-Panel-commands">
+            <div class="ms-CommandBar">
+                <div class="ms-CommandBar-sideCommands">
+                </div>
+                <div class="ms-CommandBar-mainArea">
+
+                    <div class="ms-CommandBarItem ms-PanelAction-close">
+                        <div class="ms-CommandBarItem-linkWrapper">
+                            <div class="ms-CommandBarItem-link">
+                                <span class="ms-CommandBarItem-icon ms-Icon ms-Icon--x"></span>
+                                <span class="ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular">取消</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ms-Panel-contentInner">
+          <span class="ms-Panel-headerText">分享</span>
+          <p class="ms-font-m">      
+              分享到：
+              </p>
+              <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+        </div>
+  </div>
+</div>
+ 
+            
+            
+
+
         <script src="assets/vendor/howlerjs/howler.js"></script>
         
         <script src="assets/vendor/jquery/jquery-1.12.0.js"></script>
         <script src="assets/vendor/fabric/components/SearchBox/Jquery.SearchBox.js"></script>
         <script src='assets/vendor/fabric/components/CommandBar/Jquery.CommandBar.js'></script>
+        <script src='assets/vendor/fabric/components/Panel/Jquery.Panel.js'></script>
         
         
         <script src="app/app.js"></script>
@@ -42,6 +92,7 @@
         <script src="app/controllers/detailsCtrl.js"></script>
         <script src="app/controllers/headerCtrl.js"></script>
         <script src="app/controllers/homeCtrl.js"></script>
+        <script src="app/controllers/calloutCtrl.js"></script>
         <script src="app/js/utils.js"></script>
         
         <script type="text/javascript" src="assets/vendor/kage-engine/2d.js"></script>
@@ -52,5 +103,6 @@
         <script type="text/javascript" src="assets/vendor/kage-engine/kagedf.js"></script>
         <script type="text/javascript" src="assets/vendor/kage-engine/polygon.js"></script>
         <script type="text/javascript" src="assets/vendor/kage-engine/polygons.js"></script>
+
     </body>
 </html>
