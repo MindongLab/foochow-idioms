@@ -15,7 +15,6 @@
     </div>
 </div>
 <ul class="ms-List resultList">
-    {{filterString}}
 <div ng-repeat="item in filteredList = (list | filter:filterString)" class="cListItem is-selectable" ng-click="listItemClicked(item)">
   <span class="cListItem-primaryText ms-Font-xl">{{item}}</span>
 </div>

@@ -45,6 +45,8 @@
         // If cancel button is selected remove the text and show the label
         if (cancel) {
           $(this).val('');
+          //$(this).trigger('change');
+          angular.element($(this)).triggerHandler('input');
           $searchField.addClass('hovering');
         }
         
