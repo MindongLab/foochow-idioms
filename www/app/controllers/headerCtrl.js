@@ -8,11 +8,6 @@
             $rootScope.$emit('toggleSidebar', {'state':false});
         };
         
-        $scope.aboutClicked = function () {
-            $location.path('/about');
-            $rootScope.$emit('toggleSidebar', {'state':false});
-        };
-        
         $scope.helpClicked = function () {
             $location.path('/help');
             $rootScope.$emit('toggleSidebar', {'state':false});
