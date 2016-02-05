@@ -181,3 +181,18 @@ body{
     padding-right: 2px;
 
 }
+
+.shareButton {
+    font-size: 35px;
+    cursor:pointer;
+    color: #EAEAEA;
+    line-height: 42px;
+}
+
+.calloutHide {
+    display: none;
+}
+
+.calloutShow {
+    display:block;
+}

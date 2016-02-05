@@ -2,10 +2,12 @@
     <div id="detailsHeader">
         <div class="ms-font-su">
             <span ng-repeat="char in field_text track by $index" ng-class="{highlight: highlight[$index]}"><a ng-hide="char.imgsrc">{{char.text}}</a><img ng-src="{{char.imgsrc}}" height="42" width="42" style="position:relative; top:4px" ng-show="char.imgsrc"/></span>
+             <span ng-init="initShare()" class="shareButton ms-PanelAction-open"><i class="ms-Icon ms-Icon--share"></i></span>
         </div>
         <div>
             <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter playLabel">发音</span>
             <button class="ms-Button ms-Button--hero " ng-click="playButtonClicked(result['field_audio'])"><span class="ms-Button-icon"><i class="ms-Icon ms-Icon--play"></i></span> <span class=" ms-Button-label">福州鼓楼音</span> </button>
+            
         </div>
     </div>
     <div id="detailsWrapper">
@@ -32,5 +34,10 @@
                 <span class="ms-Button-label">{{::tag}}</span> 
             </button>
         </div>
+                   
     </div>
 </div>
+
+
+
+ 

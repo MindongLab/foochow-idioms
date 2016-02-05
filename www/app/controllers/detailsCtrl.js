@@ -70,5 +70,35 @@
             $scope.highlightAnno[annoId]=false;
         };
 
+        function showShareCallout() {
+            $('.shareCallout').addClass('calloutShow').removeClass("calloutHide");
+            var shareTether = new Tether({
+                element: '.shareCallout',
+                target: '.shareButton',
+                attachment: 'top center',
+                targetAttachment: 'bottom left',
+                constraints: [{
+                    to: 'window',
+                    pin: true
+                }]
+            });
+            
+        }
+        
+        function hideShareCallout() {
+            $('.shareCallout').addClass("calloutHide").removeClass('calloutShow');
+        }
+        
+        $scope.showShare = showShareCallout;
+        
+
+        $scope.$on('$destroy', function () {
+            hideShareCallout();
+            
+        });
+        
+        $scope.initShare = function (){
+            $(".ms-Panel").Panel();
+        }
     }]);
 }());
