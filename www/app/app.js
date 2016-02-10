@@ -19,8 +19,8 @@
                 templateUrl: 'app/views/help.tpl.html',  
                // controller: 'mainCtrl'  
             })
-            .when('/about', {  
-                templateUrl: 'app/views/about.tpl.html',  
+            .when('/apps', {  
+                templateUrl: 'app/views/apps.tpl.html',  
                // controller: 'mainCtrl'  
             })      
             .otherwise({  
