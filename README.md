@@ -22,3 +22,6 @@ Foochow idioms and proverbs, with pronunciation and detailed explanations.
 
 ### Data Source
   *  《福州方言熟语歌谣》，陈泽平，1998，福建人民出版社 [经作者授权使用]
+  
+### Credits
+  * Logo Design by Juice Wu
