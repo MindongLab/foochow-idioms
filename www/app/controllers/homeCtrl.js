@@ -11,6 +11,8 @@
                     $rootScope.$emit("switchToTag", {'tag':""});
                     break;
                 case 2:
+                    $location.path('/tags');
+                    $rootScope.$emit("toggleSidebar", {'state':false});
                     break;
                 case 3:
                     $location.path('/help');

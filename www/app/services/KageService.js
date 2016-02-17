@@ -3,11 +3,11 @@
     angular.module('app').factory('KageService', ["DataService", "$q", function (dataService,$q) {
         return {
             getKage: getKage,
-            getGlypeImage: getGlypeImage
+            getGlyphImage: getGlyphImage
         };
 
         function getKage(ids, canvas) {
-            return $q.when(dataService.getGlype(ids)).then(function (r) {
+            return $q.when(dataService.getGlyph(ids)).then(function (r) {
                 drawKage(r["field_kanjivg"], canvas);
                 return canvas;
             }).catch(function (){
@@ -15,7 +15,7 @@
             });
         }
         
-        function getGlypeImage(str, size, id) {
+        function getGlyphImage(str, size, id) {
             var can = document.createElement('canvas');
             can.height=size;
             can.width=size;

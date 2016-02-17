@@ -5,7 +5,8 @@
             getAllIdioms: getAllIdioms,
             getIdiomsByTag: getIdiomsByTag,
             getIdiomByText: getIdiomByText,
-            getGlype: getGlyph
+            getGlyph: getGlyph,
+            getAllTags: getAllTags
         };
 
         function getAllIdioms() {
@@ -16,6 +17,16 @@
                 return $q.reject('e');
             })
                 );
+        }
+        
+       function getAllTags() {
+            return $q.when($http.get(SERVER_API_URL + '/tags/').then(function (r) {
+                return r.data;
+            }).catch(function () {
+                console.log('DataService: Error in getAllTags()');
+                return $q.reject('e');
+            })
+            );
         }
 
         function getIdiomsByTag(tagName) {

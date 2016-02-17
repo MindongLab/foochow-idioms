@@ -35,7 +35,7 @@
                     for (i=0; i<glyphs.length; ++i) {
                         if ((glyphs[i][0]=='{' && glyphs[i][glyphs[i].length-1]=="}")
                             || DictUtils.extendedGlyphs.indexOf(glyphs[i]) != -1) {
-                            kageService.getGlypeImage(glyphs[i],200,i).then(function (r) {
+                            kageService.getGlyphImage(glyphs[i],200,i).then(function (r) {
                                 console.log(r.id);
                                 $scope.field_text[r.id]['imgsrc'] = r.data;
                             })
@@ -48,7 +48,7 @@
             }
         };
         
-        function getGlypeImage(str) {
+        function getGlyphImage(str) {
             
             
         }

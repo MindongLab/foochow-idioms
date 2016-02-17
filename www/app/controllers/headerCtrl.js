@@ -13,6 +13,11 @@
             $rootScope.$emit('toggleSidebar', {'state':false});
         };
         
+        $scope.ctgrClicked = function () {
+            $location.path('/tags');
+            $rootScope.$emit('toggleSidebar', {'state':false});
+        };
+        
         $scope.downloadClicked = function () {
             $location.path('/apps');
             $rootScope.$emit('toggleSidebar', {'state':false});
