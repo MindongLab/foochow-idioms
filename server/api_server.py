@@ -48,6 +48,19 @@ class JSONEncoder(json.JSONEncoder):
 def hello_world():
     return "OK"
 
+@app.route('/api/tags/')
+def list_tags():
+    cursor = cTag.find()
+    if (cursor.count()==0):
+        return make_response('Not Found',404)
+    result = []
+    for item in cursor:
+        result.append(item['field_title'])
+    r = make_response(JSONEncoder(ensure_ascii=False).encode(result))
+    r.mimetype="application/json"
+    r.headers.add('Access-Control-Allow-Origin', '*')
+    return r
+
 @app.route('/api/tag/<path:tagname>')
 def show_tag(tagname):
     cursor = cTag.find({'field_title':tagname})
