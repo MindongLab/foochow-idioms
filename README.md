@@ -1,18 +1,27 @@
-##Foochow Idioms 福州话熟语大全
+# 福州話熟語大全 Foochow Idioms 
 
-Foochow idioms and proverbs, with pronunciation and detailed explanations.
+有聲的[福州話](https://cdo.wikipedia.org/wiki/%E7%A6%8F%E5%B7%9E%E8%A9%B1)熟語大全。
+[Foochow](https://en.wikipedia.org/wiki/Fuzhou_dialect) idioms and proverbs, with pronunciation and detailed explanations.
 
 ![Screenshot](Screenshot.png)
+
+## Related Repositories
+
+- **MindongLab/foochow-idioms** (this repo): Web UI and server-side code
+- [MindongLab/foochow-idioms-cordova](https://github.com/MindongLab/foochow-idioms-cordova): Mobile app
+
+## 參與開發 For Developers 
+
+[Setting up development environment 搭建开发环境](https://github.com/MindongLab/foochow-idioms/wiki/Setting-up-development-environment-%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83)
+
 ### Technology Stack
-
-#### Front end
-* Angular.js
-* Office UI Fabric (CSS Library)
-* PouchDB
-
-#### Back end
-* MongoDB
-* Python (Flask)
+- Frontend
+  * Angular.js
+  * Office UI Fabric (CSS Library)
+  * PouchDB
+- Backend
+  * MongoDB
+  * Python (Flask)
 
 ### Roadmap
 * 生僻字动态组字 Kage Engine / IDS
@@ -20,8 +29,6 @@ Foochow idioms and proverbs, with pronunciation and detailed explanations.
 * Generate share image
 * URL
 
-### Data Source
-  *  《福州方言熟语歌谣》，陈泽平，1998，福建人民出版社 [经作者授权使用]
-  
-### Credits
+## 鳴謝 Acknowledgement 
+  * 熟語資料來源:《福州方言熟语歌谣》，陈泽平，1998，福建人民出版社 [经作者授权使用]
   * Logo Design by Juice Wu
