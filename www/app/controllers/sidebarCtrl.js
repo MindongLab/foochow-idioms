@@ -15,10 +15,10 @@
             $(".ms-SearchBox").SearchBox();
         }
         
-        $scope.listItemClicked = function (text) {
-            $rootScope._query = text;
+        $scope.listItemClicked = function (item) {
+            $rootScope._query = item.title;
             //$rootScope.$emit("switchToIdiom", {'text': text});
-            $location.path('/idiom/'+text);
+            $location.path('/idiom/'+item.title+'/id/'+item.id);
             $rootScope.$emit("toggleSidebar", {'state':false});
         };
         

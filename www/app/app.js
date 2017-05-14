@@ -1,8 +1,23 @@
 (function () {
     "use strict";
+    const path = require('path');
+    const url = require('url');
+
+    const dataurl = url.format({
+        pathname: path.join(__dirname,'assets','data','api'),
+        protocal:'file:',
+        slashes:true
+    });
+
+    const audiourl = url.format({
+        pathname: path.join(__dirname,'assets','audio'),
+        protocal:'file:',
+        slashes:true
+    });
+
     angular.module('app', ['ngRoute'])
-    .constant("SERVER_API_URL","http://127.0.0.1:5000/api")
-    .constant("SERVER_AUDIO_URL","http://mindonglab.github.io/foochow-idioms-audio/audio/")
+    .constant("SERVER_API_URL",dataurl)
+    .constant("SERVER_AUDIO_URL",audiourl)
     
     .config(['$routeProvider',function ($routeProvider) {  
         $routeProvider  
@@ -10,7 +25,7 @@
                 templateUrl: 'app/views/welcome.tpl.html',  
                 controller: 'homeCtrl'  
             })  
-            .when('/idiom/:idiomtext*', {  
+            .when('/idiom/:idiomtext/id/:idiomid*', {  
                 templateUrl: 'app/views/showDetails.tpl.html',  
                 controller: 'detailsCtrl',
                 caseInsensitiveMatch: true

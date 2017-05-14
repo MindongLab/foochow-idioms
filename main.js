@@ -13,11 +13,11 @@ function createWindow () {
         slashes:true
     }))
 
-    console.log(url.format({
+/*    console.log(url.format({
         pathname: path.join(__dirname,'www','index.html'),
         protocal:'file:',
         slashes:true
-    }))
+    }))*/
 
     win.on('closed', () => {
         win=null;

@@ -4,14 +4,15 @@
         return {
             getAllIdioms: getAllIdioms,
             getIdiomsByTag: getIdiomsByTag,
-            getIdiomByText: getIdiomByText,
+            getIdiomById: getIdiomById,
             getGlyph: getGlyph,
             getAllTags: getAllTags
         };
 
         function getAllIdioms() {
-            return $q.when($http.get(SERVER_API_URL + '/all/').then(function (r) {
-                return r.data;
+            return $q.when($http.get(SERVER_API_URL + '/all.json').then(function (r) {
+                let transformed = (r.data.map((d)=>({"title":d.field_text,"id":d._id})));
+                return transformed;
             }).catch(function () {
                 console.log('DataService: Error in getAllIdioms()');
                 return $q.reject('e');
@@ -20,7 +21,7 @@
         }
         
        function getAllTags() {
-            return $q.when($http.get(SERVER_API_URL + '/tags/').then(function (r) {
+            return $q.when($http.get(SERVER_API_URL + '/all_tags.json').then(function (r) {
                 return r.data;
             }).catch(function () {
                 console.log('DataService: Error in getAllTags()');
@@ -30,23 +31,23 @@
         }
 
         function getIdiomsByTag(tagName) {
-            return $q.when($http.get(SERVER_API_URL + '/tag/' + tagName).then(function (r) {
-                return r.data;
+            return $q.when($http.get(SERVER_API_URL + '/tag_' + encodeURI(encodeURI(tagName))+'.json').then(function (r) {
+                return (r.data.map((d)=>({"title":d.field_text,"id":d._id})));
             }).catch(function () {
                 return $q.reject('e');
             }));
         }
         
         function getGlyph(ids) {
-            return $q.when($http.get(SERVER_API_URL + '/glyph/' + ids).then(function (r) {
+            return $q.when($http.get(SERVER_API_URL + '/glyph_' + encodeURI(encodeURI(ids))+'.json').then(function (r) {
                 return r.data;
             }).catch(function () {
                 return $q.reject('e');
             }));
         }
 
-        function getIdiomByText(text) {
-            return $q.when($http.get(SERVER_API_URL + '/sentence/' + text).then(function (r) {
+        function getIdiomById(id) {
+            return $q.when($http.get(SERVER_API_URL + '/s_' + id+'.json').then(function (r) {
                 return r.data;
             }).catch(function () {
                 return $q.reject('e');

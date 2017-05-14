@@ -1,12 +1,13 @@
 (function () {
     "use strict";
+    const path = require('path');
     angular.module('app').controller('detailsCtrl', ['$q','$scope', '$rootScope', '$location', '$routeParams', '$sce', 'DataService', "KageService", "SERVER_AUDIO_URL", function ($q, $scope, $rootScope, $location, $routeParams,$sce, dataService, kageService, SERVER_AUDIO_URL) {
         
         $scope.highlight = [];
         $scope.highlightAnno = [];
         console.log('detailsCtrl $scope init');
         console.log($routeParams);
-        switchToIdiom($routeParams.idiomtext);
+        switchToIdiom($routeParams.idiomid);
 
         $scope.tagClicked = function (tagName) {
             $rootScope.$emit("switchToTag", {'tag': tagName});
@@ -14,15 +15,15 @@
         };
 
         $scope.playButtonClicked = function (filename) {
-            var uri = SERVER_AUDIO_URL + filename.replace('.wma', '.mp3'),
+            var uri = path.join(SERVER_AUDIO_URL, filename.replace('.wma', '.mp3')),
                 sound = new Howl({
                     urls: [uri]
                 }).play();
         };
         //loadIdiom
-        function switchToIdiom (text) {
-            if (text) {
-                dataService.getIdiomByText(text).then(function (r) {
+        function switchToIdiom (id) {
+            if (id) {
+                dataService.getIdiomById(id).then(function (r) {
                     $scope.result = r;
                     var glyphs = DictUtils.getChars(r['field_text']); 
                     var i;
