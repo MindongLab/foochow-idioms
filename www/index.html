@@ -75,11 +75,14 @@
  
             
             
+<!-- Workaround for global vars in Electron  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
 
         <script src="assets/vendor/howlerjs/howler.js"></script>
         
         <script src="assets/vendor/jquery/jquery-1.12.0.js"></script>
+
         <script src="assets/vendor/fabric/components/SearchBox/Jquery.SearchBox.js"></script>
         <script src='assets/vendor/fabric/components/CommandBar/Jquery.CommandBar.js'></script>
         <script src='assets/vendor/fabric/components/Panel/Jquery.Panel.js'></script>
@@ -104,6 +107,7 @@
         <script type="text/javascript" src="assets/vendor/kage-engine/kagedf.js"></script>
         <script type="text/javascript" src="assets/vendor/kage-engine/polygon.js"></script>
         <script type="text/javascript" src="assets/vendor/kage-engine/polygons.js"></script>
-
+<!-- Workaround for global vars in Electron  -->
+<script>if (window.module) module = window.module;</script>
     </body>
 </html>
