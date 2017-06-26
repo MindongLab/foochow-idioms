@@ -4,7 +4,12 @@ import json
 from pymongo import MongoClient
 from bson import ObjectId
 
-client = MongoClient()
+MONGO_CONN = "mongodb://mongo:27017"
+API_HOST = "0.0.0.0"
+API_PORT = 80
+DEBUG_MODE = True
+
+client = MongoClient(MONGO_CONN)
 db = client.foochowidioms
 cSentence = db['entity_sentence']
 cTag = db['entity_tag']
@@ -133,4 +138,4 @@ def get_glyph(ids):
         return r
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=DEBUG_MODE, host=API_HOST, port=API_PORT)
