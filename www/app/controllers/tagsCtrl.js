@@ -8,6 +8,6 @@
             $rootScope.$emit("switchToTag", {'tag': tagName});
             $rootScope.$emit("toggleSidebar", {'state': true});
         };
-        
+
     }]);
 }());

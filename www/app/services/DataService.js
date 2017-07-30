@@ -18,7 +18,7 @@
             })
                 );
         }
-        
+
        function getAllTags() {
             return $q.when($http.get(SERVER_API_URL + '/tags/').then(function (r) {
                 return r.data;
@@ -36,7 +36,7 @@
                 return $q.reject('e');
             }));
         }
-        
+
         function getGlyph(ids) {
             return $q.when($http.get(SERVER_API_URL + '/glyph/' + ids).then(function (r) {
                 return r.data;
@@ -53,5 +53,5 @@
             }));
         }
     }]);
-        
+
 }());

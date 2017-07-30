@@ -14,7 +14,7 @@
                 return $q.reject('e');
             });
         }
-        
+
         function getGlyphImage(str, size, id) {
             var can = document.createElement('canvas');
             can.height=size;
@@ -25,7 +25,7 @@
                 return $q.reject('e');
             });
         }
-                                                  
+
         function drawKage(arr, canvas) {
             var ctx = canvas.getContext("2d");
 
@@ -33,13 +33,13 @@
             kage.kUseCurve = false;
             var polygons = new Polygons();
 
-            
+
             var i;
             for (i=0; i <arr.length; ++i) {
                 kage.kBuhin.push(arr[i]["name"],arr[i]["code"]);
             }
             kage.makeGlyph(polygons, "target");
-            
+
             ctx.fillStyle = "rgb(0, 0, 0)";
 
             for(var i = 0; i < polygons.array.length; i++){
@@ -52,7 +52,7 @@
                 ctx.fill();
             }
         }
-        
+
     }]);
-        
+
 }());
