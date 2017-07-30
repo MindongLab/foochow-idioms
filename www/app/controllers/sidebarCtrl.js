@@ -10,22 +10,22 @@
         //Only applicable in mobile view
         $scope.isOpen = false;
         $scope.tagName = "";
-        
+
         $scope.init = function () {
             $(".ms-SearchBox").SearchBox();
         }
-        
+
         $scope.listItemClicked = function (text) {
             $rootScope._query = text;
             //$rootScope.$emit("switchToIdiom", {'text': text});
             $location.path('/idiom/'+text);
             $rootScope.$emit("toggleSidebar", {'state':false});
         };
-        
+
         $scope.removeTagClicked = function () {
             switchToTag("");
         }
-        
+
         function switchToTag(tag) {
             if (tag && tag!='') {
                 $scope.loading = true;
@@ -38,9 +38,9 @@
                 $scope.tagName="";
                 loadAll();
             }
-            
+
         }
-        
+
         function loadAll() {
             $scope.loading=true;
             dataService.getAllIdioms().then(function (r) {
@@ -49,9 +49,9 @@
                 $scope.loading= false;
             });
         }
-        
+
         loadAll();
-        
+
         var unbind = $rootScope.$on("switchToTag", function (e, args) {
             if (args && args.tag) {
                 switchToTag(args.tag);
@@ -61,7 +61,7 @@
         });
 
         $scope.$on('$destroy', unbind);
-        
+
         function toggleSidebar(state) {
             if (state!=undefined) {
                 if (state == false)
@@ -76,22 +76,22 @@
             {
                 $("#sideBar").removeClass("sideBarHide").removeClass("slideLeftOut40").addClass("slideRightIn40");
             } else
-            {   
+            {
                 $("#sideBar").removeClass("slideRightIn40").addClass("slideLeftOut40");
                 setTimeout(hideSidebar,170);
             }
         }
-        
+
         $scope.toggleSidebar = toggleSidebar;
-        
-        
+
+
         unbind = $rootScope.$on("toggleSidebar", function (e, args) {
             if (args) {
                 toggleSidebar(args.state);
             } else {
                 toggleSidebar();
             }
-            
+
         });
         $scope.$on('$destroy', unbind);
     }]);

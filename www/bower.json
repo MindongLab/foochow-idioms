@@ -1,0 +1,22 @@
+{
+  "name": "foochow-idioms",
+  "homepage": "https://github.com/MindongLab/foochow-idioms",
+  "authors": [
+    "MindongLab"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#1.5.0",
+    "angular-route": "1.5.0",
+    "ng-office-ui-fabric": "^0.15.3",
+    "howler.js": "howler#^2.0.4",
+    "tether": "1.1.0"
+  }
+}

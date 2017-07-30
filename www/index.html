@@ -2,30 +2,30 @@
     <head>
         <meta charset="utf-8">
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-        <link href="assets/vendor/fabric/fabric.css" type="text/css" rel="stylesheet" />
-        <link href="assets/vendor/fabric/fabric.components.css" type="text/css" rel="stylesheet" />
+        <link href="bower_components/office-ui-fabric/dist/css/fabric.min.css" type="text/css" rel="stylesheet" />
+        <link href="bower_components/office-ui-fabric/dist/css/fabric.components.min.css" type="text/css" rel="stylesheet" />
         <link href="assets/css/cListItem.css" type="text/css" rel="stylesheet" />
-        <link href="assets/css/index.css" type="text/css" rel="stylesheet" /> 
+        <link href="assets/css/index.css" type="text/css" rel="stylesheet" />
         <link href="assets/css/index.mobile.css" type="text/css" rel="stylesheet" />
         <link href="assets/css/overrides.css" type="text/css" rel="stylesheet" />
-        
-      
-        <script src="assets/vendor/angular/angular.js"></script>
-        <script src="assets/vendor/angular/angular-route.min.js"></script>
+
+
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-route/angular-route.min.js"></script>
         <title>福州话熟语大全</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        
-        
+
+
     </head>
     <body ng-app="app">
         <div ng-cloak ng-controller="headerCtrl" id="headerBar" class="ms-bgColor-themeTertiary" ng-include="'app/views/header.tpl.html'">
-            
+
         </div>
         <div id="mainContainer" ng-cloak>
             <div id="sideBar" ng-controller="sidebarCtrl" class="ms-bgColor-themeLight sideBarHide" ng-include="'app/views/sidebar.tpl.html'" >
             </div>
-            <div id="mainPane">        
+            <div id="mainPane">
                 <div ng-view></div>
             </div>
         </div>
@@ -54,7 +54,7 @@
         </div>
         <div class="ms-Panel-contentInner">
           <span class="ms-Panel-headerText">分享</span>
-          <p class="ms-font-m">      
+          <p class="ms-font-m">
               分享到：
               </p>
               <!-- JiaThis Button BEGIN -->
@@ -72,19 +72,20 @@
         </div>
   </div>
 </div>
- 
-            
-            
 
 
-        <script src="assets/vendor/howlerjs/howler.js"></script>
-        
-        <script src="assets/vendor/jquery/jquery-1.12.0.js"></script>
-        <script src="assets/vendor/fabric/components/SearchBox/Jquery.SearchBox.js"></script>
+
+
+
+        <script src="bower_components/howler.js/dist/howler.min.js"></script>
+
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- <script src="assets/vendor/fabric/components/SearchBox/Jquery.SearchBox.js"></script>
         <script src='assets/vendor/fabric/components/CommandBar/Jquery.CommandBar.js'></script>
-        <script src='assets/vendor/fabric/components/Panel/Jquery.Panel.js'></script>
-        
-        
+        <script src='assets/vendor/fabric/components/Panel/Jquery.Panel.js'></script> -->
+        <script src='bower_components/office-ui-fabric/dist/js/jquery.fabric.min.js'></script>
+
+
         <script src="app/app.js"></script>
         <script src="app/services/DataService.js"></script>
         <script src="app/services/KageService.js"></script>
@@ -95,7 +96,7 @@
         <script src="app/controllers/calloutCtrl.js"></script>
         <script src="app/controllers/tagsCtrl.js"></script>
         <script src="app/js/utils.js"></script>
-        
+
         <script type="text/javascript" src="assets/vendor/kage-engine/2d.js"></script>
         <script type="text/javascript" src="assets/vendor/kage-engine/buhin.js"></script>
         <script type="text/javascript" src="assets/vendor/kage-engine/curve.js"></script>
