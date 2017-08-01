@@ -60,12 +60,28 @@ gulp.task('buildDev', ['clean'], function () {
  return gulp.src('./index.html')
  .pipe(inject(gulp.src(paths.js, {read: false}), {relative: true}))
  .pipe(inject(gulp.src(paths.css, {read: false}), {relative: true}))
- .pipe(gulp.dest('./'));
+ .pipe(gulp.dest('./build'));
 });
 
 gulp.task('buildPro', ['clean', 'templateCache', 'js', 'deployCSS'], function () {
  return gulp.src('./index.html')
  .pipe(inject(gulp.src(paths.buildjs, {read: false}), {relative: true}))
  .pipe(inject(gulp.src(paths.buildcss, {read: false}), {relative: true}))
- .pipe(gulp.dest('./'));
+ .pipe(gulp.dest('./build'));
 });
+
+gulp.task('serve', ['buildDev'], function (){
+  var bs = require('browser-sync').create();
+  bs.init({
+    startPath: '/',
+    server: {
+      baseDir: './build',
+      routes: {
+        '/node_modules': './node_modules',
+        '/bower_components': './bower_components',
+        '/app': './app',
+        '/assets': './assets'
+      }
+    }
+  });
+})
