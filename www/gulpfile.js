@@ -65,8 +65,8 @@ gulp.task('buildDev', ['clean'], function () {
 
 gulp.task('buildPro', ['clean', 'templateCache', 'js', 'deployCSS'], function () {
  return gulp.src('./index.html')
- .pipe(inject(gulp.src(paths.buildjs, {read: false}), {relative: true}))
- .pipe(inject(gulp.src(paths.buildcss, {read: false}), {relative: true}))
+ .pipe(inject(gulp.src(paths.buildjs, {read: false}), {relative: true, ignorePath: 'build'}))
+ .pipe(inject(gulp.src(paths.buildcss, {read: false}), {relative: true, ignorePath: 'build'}))
  .pipe(gulp.dest('./build'));
 });
 
