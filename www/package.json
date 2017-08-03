@@ -2,8 +2,7 @@
   "name": "foochow-idioms",
   "version": "1.0.0",
   "scripts": {
-    "buildDev": "gulp buildDev",
-    "buildPro": "gulp buildPro",
+    "build": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "MindongLab",
@@ -19,6 +18,7 @@
     "gulp-inject": "^4.2.0",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-strip-debug": "^1.1.0",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify": "^3.0.0",
+    "run-sequence": "^2.1.0"
   }
 }

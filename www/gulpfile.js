@@ -7,6 +7,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var stripDebug = require('gulp-strip-debug');
 var cssmin = require('gulp-cssmin');
 var inject = require('gulp-inject');
+var runSequence = require('run-sequence');
 
 var paths = {
   js: [
@@ -16,21 +17,29 @@ var paths = {
     'bower_components/jquery/dist/jquery.min.js',
     'bower_components/office-ui-fabric/dist/js/jquery.fabric.min.js',
     './app/**/*.js',
-    './assets/vendor/kage-engine/*.js',
-    './build/template.js'
+    './assets/vendor/kage-engine/*.js'
   ],
   css: [
     './bower_components/office-ui-fabric/dist/css/fabric.min.css',
     './bower_components/office-ui-fabric/dist/css/fabric.components.min.css',
     './assets/css/*.css'
   ],
+  assets: [
+    './assets/**/*.png',
+    './assets/**/*.mp3'
+  ],
   templates: ['./**/*.tpl.html'],
-  buildjs: ['./build/**/*.min.js'],
+  buildjs: ['./build/**/*.min.js', './build/template.js'],
   buildcss: ['./build/**/*.css']
 };
 
 gulp.task('clean', function () {
   return del('./build');
+});
+
+gulp.task('carrier', function () {
+  return gulp.src(paths.assets)
+    .pipe(gulp.dest('./build/assets'))
 });
 
 gulp.task('templateCache', function () {
@@ -56,32 +65,31 @@ gulp.task('js', function () {
   .pipe(gulp.dest('./build'));
 });
 
-gulp.task('buildDev', ['clean'], function () {
- return gulp.src('./index.html')
- .pipe(inject(gulp.src(paths.js, {read: false}), {relative: true}))
- .pipe(inject(gulp.src(paths.css, {read: false}), {relative: true}))
- .pipe(gulp.dest('./build'));
-});
-
-gulp.task('buildPro', ['clean', 'templateCache', 'js', 'deployCSS'], function () {
+gulp.task('inject', function () {
  return gulp.src('./index.html')
  .pipe(inject(gulp.src(paths.buildjs, {read: false}), {relative: true, ignorePath: 'build'}))
  .pipe(inject(gulp.src(paths.buildcss, {read: false}), {relative: true, ignorePath: 'build'}))
  .pipe(gulp.dest('./build'));
 });
 
-gulp.task('serve', ['buildDev'], function (){
+gulp.task('build', function (callback) {
+  runSequence(
+    'clean',
+    'templateCache',
+    'js',
+    'deployCSS',
+    'carrier',
+    'inject',
+    callback
+  );
+});
+
+gulp.task('serve', function (){
   var bs = require('browser-sync').create();
   bs.init({
     startPath: '/',
     server: {
-      baseDir: './build',
-      routes: {
-        '/node_modules': './node_modules',
-        '/bower_components': './bower_components',
-        '/app': './app',
-        '/assets': './assets'
-      }
+      baseDir: './'
     }
   });
 })

@@ -7,6 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <!-- inject:css -->
+  <link href="bower_components/office-ui-fabric/dist/css/fabric.min.css" type="text/css" rel="stylesheet" />
+  <link href="bower_components/office-ui-fabric/dist/css/fabric.components.min.css" type="text/css" rel="stylesheet" />
+  <link href="assets/css/cListItem.css" type="text/css" rel="stylesheet" />
+  <link href="assets/css/index.css" type="text/css" rel="stylesheet" />
+  <link href="assets/css/index.mobile.css" type="text/css" rel="stylesheet" />
+  <link href="assets/css/overrides.css" type="text/css" rel="stylesheet" />
   <!-- endinject -->
 </head>
 
@@ -67,6 +73,31 @@
 
 
   <!-- inject:js -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/howler.js/dist/howler.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src='bower_components/office-ui-fabric/dist/js/jquery.fabric.min.js'></script>
+
+    <script src="app/app.js"></script>
+    <script src="app/services/DataService.js"></script>
+    <script src="app/services/KageService.js"></script>
+    <script src="app/controllers/sidebarCtrl.js"></script>
+    <script src="app/controllers/detailsCtrl.js"></script>
+    <script src="app/controllers/headerCtrl.js"></script>
+    <script src="app/controllers/homeCtrl.js"></script>
+    <script src="app/controllers/calloutCtrl.js"></script>
+    <script src="app/controllers/tagsCtrl.js"></script>
+    <script src="app/js/utils.js"></script>
+
+    <script type="text/javascript" src="assets/vendor/kage-engine/2d.js"></script>
+    <script type="text/javascript" src="assets/vendor/kage-engine/buhin.js"></script>
+    <script type="text/javascript" src="assets/vendor/kage-engine/curve.js"></script>
+    <script type="text/javascript" src="assets/vendor/kage-engine/kage.js"></script>
+    <script type="text/javascript" src="assets/vendor/kage-engine/kagecd.js"></script>
+    <script type="text/javascript" src="assets/vendor/kage-engine/kagedf.js"></script>
+    <script type="text/javascript" src="assets/vendor/kage-engine/polygon.js"></script>
+    <script type="text/javascript" src="assets/vendor/kage-engine/polygons.js"></script>
   <!-- endinject -->
 
 </body>
