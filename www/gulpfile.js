@@ -29,7 +29,7 @@ var paths = {
     './assets/**/*.mp3'
   ],
   templates: ['./**/*.tpl.html'],
-  buildjs: ['./build/**/*.min.js', './build/template.js'],
+  buildjs: ['./build/**/*.js'],
   buildcss: ['./build/**/*.css']
 };
 
