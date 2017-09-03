@@ -25,7 +25,7 @@ module.exports = {
         'kage-engine': 'Kage'
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({ name: "vendor", filename: "vendor.bundle.js"}),
+      //  new webpack.optimize.CommonsChunkPlugin({ name: "vendor", filename: "vendor.bundle.js"}),
         new webpack.ProvidePlugin({
             'Kage': 'kage-engine'
         })          

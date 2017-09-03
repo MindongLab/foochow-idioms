@@ -8,6 +8,7 @@ var stripDebug = require('gulp-strip-debug');
 var cssmin = require('gulp-cssmin');
 var inject = require('gulp-inject');
 var runSequence = require('run-sequence');
+var webpack = require('webpack-stream');
 
 var paths = {
   js: [
@@ -16,7 +17,6 @@ var paths = {
     'bower_components/howler.js/dist/howler.min.js',
     'bower_components/jquery/dist/jquery.min.js',
     'bower_components/office-ui-fabric/dist/js/jquery.fabric.min.js',
-    './app/**/*.js',
     './assets/vendor/kage-engine/*.js'
   ],
   css: [
@@ -51,7 +51,7 @@ gulp.task('templateCache', function () {
 gulp.task('deployCSS', function() {
  return gulp.src(paths.css)
  .pipe(cssmin())
- .pipe(concat('all.css'))
+ .pipe(concat('bundle.css'))
  .pipe(gulp.dest('./build'));
 });
 
@@ -63,6 +63,13 @@ gulp.task('js', function () {
   .pipe(concat('all.min.js'))
   .pipe(sourcemaps.write())
   .pipe(gulp.dest('./build'));
+});
+
+// Build Angular App files via Webpack
+gulp.task('js::webpack', function () {
+  return gulp.src('app/app.js')
+    .pipe(webpack(require('./webpack.config.js')))
+    .pipe(gulp.dest('./build'));
 });
 
 gulp.task('inject', function () {
@@ -77,6 +84,7 @@ gulp.task('build', function (callback) {
     'clean',
     'templateCache',
     'js',
+    'js::webpack',
     'deployCSS',
     'carrier',
     'inject',
@@ -90,6 +98,17 @@ gulp.task('serve', function (){
     startPath: '/',
     server: {
       baseDir: './'
+    }
+  });
+})
+
+
+gulp.task('serve::dev', function (){
+  var bs = require('browser-sync').create();
+  bs.init({
+    startPath: '/',
+    server: {
+      baseDir: './build'
     }
   });
 })
