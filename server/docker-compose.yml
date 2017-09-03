@@ -7,7 +7,7 @@ services:
       context: ./api
       dockerfile: Dockerfile
     ports: 
-      - "2052:80"
+      - "5000:80"
     links:
       - db:mongo
     depends_on:
