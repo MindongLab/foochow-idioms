@@ -6,7 +6,13 @@
         </div>
         <div>
             <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter playLabel">发音</span>
-            <button class="ms-Button ms-Button--hero " ng-click="playButtonClicked(result['field_audio'])"><span class="ms-Button-icon"><i class="ms-Icon ms-Icon--play"></i></span> <span class=" ms-Button-label">福州市区音</span> </button>
+            <button class="ms-Button ms-Button--hero " ng-click="playButtonClicked(result['field_audio'])">
+                <span class="ms-Button-icon">
+                    <i ng-hide="isAudioPlaying" class="ms-Icon ms-Icon--play"></i>
+                    <i ng-show="isAudioPlaying" class="ms-Icon ms-Icon--ellipsis"></i>
+                </span> 
+                <span class="ms-Button-label">福州市区音</span>
+            </button>
             
         </div>
     </div>
