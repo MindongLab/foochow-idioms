@@ -79,7 +79,7 @@ gulp.task('inject', function () {
  .pipe(gulp.dest('./build'));
 });
 
-gulp.task('build', function (callback) {
+gulp.task('build::dev', function (callback) {
   runSequence(
     'clean',
     'templateCache',
@@ -92,7 +92,7 @@ gulp.task('build', function (callback) {
   );
 });
 
-gulp.task('serve', function (){
+gulp.task('serve::prod', function (){
   var bs = require('browser-sync').create();
   bs.init({
     startPath: '/',
@@ -103,12 +103,17 @@ gulp.task('serve', function (){
 })
 
 
-gulp.task('serve::dev', function (){
+gulp.task('serve::dev', ['build::dev'], function (){
   var bs = require('browser-sync').create();
   bs.init({
     startPath: '/',
     server: {
-      baseDir: './build'
+      baseDir: './build',
+      routes: {
+        '/assets': './assets',  // dev only: serve audio files locally
+                                // we need this route because `assets` is not copied to the `build` folder
+        '/favicon.ico': './favicon.ico'                       
+      }
     }
   });
 })
