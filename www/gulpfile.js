@@ -34,7 +34,7 @@ var paths = {
 };
 
 gulp.task('clean', function () {
-  return del('./build');
+  return del(['app/**/*.js', 'app/**/*.js.map','./build']);
 });
 
 gulp.task('carrier', function () {

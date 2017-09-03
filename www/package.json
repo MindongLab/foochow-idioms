@@ -7,6 +7,7 @@
   },
   "author": "MindongLab",
   "devDependencies": {
+    "awesome-typescript-loader": "^3.2.3",
     "browser-sync": "^2.18.13",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
@@ -20,7 +21,13 @@
     "gulp-strip-debug": "^1.1.0",
     "gulp-uglify": "^3.0.0",
     "run-sequence": "^2.1.0",
+    "source-map-loader": "^0.2.1",
+    "typescript": "^2.5.2",
     "webpack": "^3.5.5",
     "webpack-stream": "^4.0.0"
+  },
+  "dependencies": {
+    "@types/angular": "^1.5.0",
+    "@types/node": "^8.0.26"
   }
 }
