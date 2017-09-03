@@ -19,9 +19,9 @@ function DetailsCtrl($q, $scope, $rootScope,
     };
 
     $scope.playButtonClicked = function (filename) {
-        var uri = SERVER_AUDIO_URL + filename.replace('.wma', '.mp3'),
-            sound = new Howl({
-                urls: [uri]
+        var uri = SERVER_AUDIO_URL + filename.replace('.wma', '.mp3');
+        var sound = new Howl({
+                src: [uri]
             }).play();
     };
 
