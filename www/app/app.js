@@ -31,3 +31,4 @@ angular.module('app', ['ngRoute'])
 }]);
 
 require('./controllers');
+require('./services');

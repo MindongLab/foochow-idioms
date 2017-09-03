@@ -1,3 +1,5 @@
+'use strict';
+
 function getSymbols(string) {
     var index = 0;
     var length = string.length;
@@ -20,29 +22,29 @@ function getSymbols(string) {
 
 DictUtils = {};
 (function(){
-    "use strict";
-    //Glypes that are Unicode extended chars, but are missing in some fonts. (Needs to be replaced by KanjiVG)
-    DictUtils.extendedGlyphs = ['𣍐', '𩩍','𠲥','𢵣','𥻵','𥮕'];
+    'use strict';
+    // Glyphs that are Unicode extended chars, but are missing in some fonts. (Needs to be replaced by KanjiVG)
+    DictUtils.extendedGlyphs = ['𣍐', '𩩍', '𠲥', '𢵣', '𥻵', '𥮕'];
 
-    //Get chars in a string. Treat IDS as a char.
+    // Get chars in a string. Treat IDS as a char.
     DictUtils.getChars = function(str) {
         var unicodeStr = getSymbols(str);
         var outputStr = [], tmp="";
-        var i, idsMode=false;
+        var i, idsMode = false;
         for (i=0; i<unicodeStr.length; ++i) {
             if (idsMode) {
-                if (unicodeStr[i]=="}") {
-                    tmp+="}";
+                if (unicodeStr[i] == "}") {
+                    tmp += "}";
                     idsMode=false;
                     outputStr.push(tmp);
-                    tmp="";
+                    tmp = "";
                 } else {
-                    tmp+=unicodeStr[i];
+                    tmp += unicodeStr[i];
                 }
             } else {
-                if (unicodeStr[i]=="{") {
-                    idsMode=true;
-                    tmp+="{";
+                if (unicodeStr[i] == "{") {
+                    idsMode = true;
+                    tmp += "{";
                 } else {
                     outputStr.push(unicodeStr[i]);
                 }
@@ -51,38 +53,6 @@ DictUtils = {};
         return outputStr;
     }
 
-
-
-    /*
-    DictUtils.upgrade =  function (view,rev) {
-        var tmp = { '_id': $scope.current.toString(), 'annotation': [] };
-        var i,j;
-        for (i = 0; i < view.length; ++i) {
-            tmp['annotation'].push({ 'text': view[i]['text'], 'indices': [] });
-            for (j = 0; j < view[i]['indices'].length; ++j)
-                if (view[i]['indices'][j])
-                    tmp['annotation'][i]['indices'].push(j);
-        }
-        if (rev)
-            tmp['_rev'] = rev;
-
-        return tmp;
-    }
-    */
-
-    /*
-    DictUtils.downgrade(model) {
-        var tmp = [];
-        var i, j;
-        for (i = 0; i < model['annotation'].length; ++i) {
-            tmp.push({ 'text': model['annotation'][i]['text'], 'indices': [] });
-            for (j = 0; j < $scope.sentence.length; ++j)
-            {
-                tmp[i]['indices'].push(false);
-            }
-            for (j = 0; j < model['annotation'][i]['indices'].length; ++j)
-                tmp[i]['indices'][model['annotation'][i]['indices'][j]] = true;
-        }
-        return tmp;
-    }*/
 })();
+
+module.exports = DictUtils;

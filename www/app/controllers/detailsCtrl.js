@@ -1,7 +1,8 @@
 "use strict";
 
-DetailsCtrl.$inject  = ['$q','$scope', '$rootScope', '$location', '$routeParams', '$sce', 'DataService', "KageService", "SERVER_AUDIO_URL"];
+var DictUtils = require('../js/utils');
 
+DetailsCtrl.$inject  = ['$q','$scope', '$rootScope', '$location', '$routeParams', '$sce', 'DataService', "KageService", "SERVER_AUDIO_URL"];
 
 function DetailsCtrl($q, $scope, $rootScope, 
                      $location, $routeParams, $sce, dataService, kageService, SERVER_AUDIO_URL) {
