@@ -93,7 +93,7 @@ function SidebarCtrl($scope, $rootScope, $location, dataService) {
         if (args) {
             toggleSidebar(args.state);
         } else {
-            toggleSidebar();
+            toggleSidebar(undefined);
         }
 
     });
