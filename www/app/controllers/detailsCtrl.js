@@ -38,14 +38,17 @@ function DetailsCtrl($q, $scope, $rootScope,
               onend: function() {
                 console.log('Audio playback finished!');
                 $scope.isAudioPlaying = false;
+                $scope.$apply();
               }.bind(this),
               onplayerror: function() {
                 console.log('Audio playback failed!');
                 $scope.isAudioPlaying = false;
+                $scope.$apply();
               }.bind(this),
               onloaderror: function() {
                 console.log('Audio failed to load!');
                 $scope.isAudioPlaying = false;
+                $scope.$apply();
               }.bind(this),
             });
             sound.play();
