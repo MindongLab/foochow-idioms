@@ -8,7 +8,7 @@
 ## 平臺 Platforms
 - [**網頁版 Web App**](http://idioms.mindong.asia) 
 - [**電腦離線版 Offline version for PC (dev version; build by yourself)**](https://github.com/MindongLab/foochow-idioms/tree/electron)
-- [**Android**]
+- **Android**
   - [Google Play](https://play.google.com/store/apps/details?id=org.mindonglab.foochowidioms)
   - [豌豆莢 Wandoujia](http://www.wandoujia.com/apps/org.mindonglab.foochowidioms)
 
