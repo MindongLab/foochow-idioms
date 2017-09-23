@@ -2,7 +2,7 @@
 
 var DictUtils = require('../js/utils');
 
-DetailsCtrl.$inject  = ['$q', 
+DetailsController.$inject  = ['$q', 
                         '$scope',
                         '$rootScope', 
                         '$location', 
@@ -12,7 +12,7 @@ DetailsCtrl.$inject  = ['$q',
                         'KageService', 
                         'SERVER_AUDIO_URL'];
 
-function DetailsCtrl($q, $scope, $rootScope, 
+function DetailsController($q, $scope, $rootScope, 
                      $location, $routeParams, $sce, dataService, kageService, SERVER_AUDIO_URL) {
 
     $scope.highlight = [];
@@ -114,4 +114,4 @@ function DetailsCtrl($q, $scope, $rootScope,
     }
 };
 
-module.exports = DetailsCtrl;
+module.exports = DetailsController;

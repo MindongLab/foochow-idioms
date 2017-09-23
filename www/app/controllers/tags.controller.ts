@@ -1,8 +1,8 @@
 'use strict';
 
-TagsCtrl.$inject = ['$scope', '$rootScope', '$location', "DataService"];
+TagsController.$inject = ['$scope', '$rootScope', '$location', "DataService"];
 
-function TagsCtrl($scope, $rootScope, $location, dataService) {
+function TagsController($scope, $rootScope, $location, dataService) {
     dataService.getAllTags().then(function (r) {
             $scope.list =r;
     })
@@ -13,5 +13,5 @@ function TagsCtrl($scope, $rootScope, $location, dataService) {
 
 };
 
-module.exports = TagsCtrl;
+module.exports = TagsController;
 

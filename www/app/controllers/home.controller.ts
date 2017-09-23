@@ -1,8 +1,8 @@
 'use strict';
 
-HomeCtrl.$inject = ['$scope', '$rootScope', '$location', "KageService"];
+HomeController.$inject = ['$scope', '$rootScope', '$location', "KageService"];
 
-function HomeCtrl($scope, $rootScope, $location, kageService) {
+function HomeController($scope, $rootScope, $location, kageService) {
     $scope.featureClicked = function (id) {
         switch (id)
         {
@@ -35,5 +35,5 @@ function HomeCtrl($scope, $rootScope, $location, kageService) {
 
 };
 
-module.exports = HomeCtrl;
+module.exports = HomeController;
 

@@ -17,10 +17,10 @@
 </head>
 
 <body ng-app="app">
-  <div ng-cloak ng-controller="headerCtrl" id="headerBar" class="ms-bgColor-themeTertiary" ng-include="'app/views/header.tpl.html'">
+  <div ng-cloak ng-controller="headerController" id="headerBar" class="ms-bgColor-themeTertiary" ng-include="'app/views/header.tpl.html'">
   </div>
   <div id="mainContainer" ng-cloak>
-    <div id="sideBar" ng-controller="sidebarCtrl" class="ms-bgColor-themeLight sideBarHide" ng-include="'app/views/sidebar.tpl.html'">
+    <div id="sideBar" ng-controller="sidebarController" class="ms-bgColor-themeLight sideBarHide" ng-include="'app/views/sidebar.tpl.html'">
     </div>
     <div id="mainPane">
       <div ng-view></div>

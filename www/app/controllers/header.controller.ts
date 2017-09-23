@@ -1,10 +1,10 @@
 "use strict";
 
-HeaderCtrl.$inject =  ['$scope', '$rootScope', '$location'];
+HeaderController.$inject =  ['$scope', '$rootScope', '$location'];
 
 $ = require('jquery');
 
-function HeaderCtrl($scope, $rootScope, $location) {
+function HeaderController($scope, $rootScope, $location) {
     $scope.isOpen = false;
 
     $scope.homeClicked = function () {
@@ -60,5 +60,5 @@ function HeaderCtrl($scope, $rootScope, $location) {
     //  $scope.init();
 };
 
-module.exports = HeaderCtrl;
+module.exports = HeaderController;
 

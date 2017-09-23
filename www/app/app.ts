@@ -7,11 +7,11 @@ angular.module('app', ['ngRoute'])
     $routeProvider
         .when('/', {
             templateUrl: 'app/views/welcome.tpl.html',
-            controller: 'homeCtrl'
+            controller: 'homeController'
         })
         .when('/idiom/:idiomtext*', {
             templateUrl: 'app/views/showDetails.tpl.html',
-            controller: 'detailsCtrl',
+            controller: 'detailsController',
             caseInsensitiveMatch: true
         })
         .when('/help', {
@@ -20,7 +20,7 @@ angular.module('app', ['ngRoute'])
         })
         .when('/tags', {
             templateUrl: 'app/views/tags.tpl.html' ,
-            controller: 'tagsCtrl'
+            controller: 'tagsController'
         })
         .when('/apps', {
             templateUrl: 'app/views/apps.tpl.html'

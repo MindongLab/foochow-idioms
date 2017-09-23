@@ -3,9 +3,9 @@
 var angular = require('angular');
 
 angular.module('app')
-  .controller('calloutCtrl', require('./calloutCtrl'))
-  .controller('detailsCtrl', require('./detailsCtrl'))
-  .controller('headerCtrl', require('./headerCtrl'))
-  .controller('homeCtrl', require('./homeCtrl'))
-  .controller('sidebarCtrl', require('./sidebarCtrl'))
-  .controller('tagsCtrl', require('./tagsCtrl'));
+  .controller('calloutController', require('./callout.controller'))
+  .controller('detailsController', require('./details.controller'))
+  .controller('headerController', require('./header.controller'))
+  .controller('homeController', require('./home.controller'))
+  .controller('sidebarController', require('./sidebar.controller'))
+  .controller('tagsController', require('./tags.controller'));

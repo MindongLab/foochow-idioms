@@ -1,9 +1,9 @@
 'use strict';
 
-SidebarCtrl.$inject = ['$scope', '$rootScope', '$location', 'DataService'];
+SidebarController.$inject = ['$scope', '$rootScope', '$location', 'DataService'];
 $ = require('jquery');
 
-function SidebarCtrl($scope, $rootScope, $location, dataService) {
+function SidebarController($scope, $rootScope, $location, dataService) {
     var hideSidebar = function() {
         $("#sideBar").addClass("sideBarHide");
     };
@@ -100,4 +100,4 @@ function SidebarCtrl($scope, $rootScope, $location, dataService) {
     $scope.$on('$destroy', unbind);
 };
 
-module.exports = SidebarCtrl;
+module.exports = SidebarController;
