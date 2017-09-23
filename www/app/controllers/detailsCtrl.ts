@@ -1,4 +1,7 @@
 "use strict";
+// workaround for global variables
+declare var Howl: any;
+declare var Tether: any;
 
 var DictUtils = require('../js/utils');
 

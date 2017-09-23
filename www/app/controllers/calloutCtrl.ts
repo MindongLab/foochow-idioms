@@ -1,7 +1,7 @@
 'use strict';
 
 CalloutCtrl.$inject = ['$scope', '$rootScope', '$location'];
-$ = require('jquery');
+var $ = require('jquery');
     
 function CalloutCtrl($scope, $rootScope, $location) {
     $scope.closeButtonClicked = function () {

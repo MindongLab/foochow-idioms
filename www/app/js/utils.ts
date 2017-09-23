@@ -20,7 +20,7 @@ function getSymbols(string) {
     return output;
 }
 
-var DictUtils = {};
+var DictUtils : any = {};
 (function(){
     'use strict';
     // Glyphs that are Unicode extended chars, but are missing in some fonts. (Needs to be replaced by KanjiVG)

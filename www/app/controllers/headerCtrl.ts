@@ -51,7 +51,7 @@ function HeaderCtrl($scope, $rootScope, $location) {
         if (args) {
             changeState(args.state);
         } else {
-            changeState();
+            changeState(undefined);
         }
 
     });

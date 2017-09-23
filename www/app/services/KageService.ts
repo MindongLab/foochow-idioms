@@ -1,5 +1,9 @@
 'use strict';
 
+// workaround for global variables
+declare var Kage: any;
+declare var Polygons: any;
+
 KageService.$inject = ["DataService", "$q"];
 
 function KageService(dataService, $q) {
@@ -35,9 +39,7 @@ function KageService(dataService, $q) {
         kage.kUseCurve = false;
         var polygons = new Polygons();
 
-
-        var i;
-        for (i=0; i <arr.length; ++i) {
+        for (var i=0; i <arr.length; ++i) {
             kage.kBuhin.push(arr[i]["name"],arr[i]["code"]);
         }
         kage.makeGlyph(polygons, "target");
