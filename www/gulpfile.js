@@ -8,6 +8,7 @@ var stripDebug = require('gulp-strip-debug');
 var cssmin = require('gulp-cssmin');
 var inject = require('gulp-inject');
 var runSequence = require('run-sequence');
+var webpack = require('webpack-stream');
 
 var paths = {
   js: [
@@ -16,7 +17,6 @@ var paths = {
     'bower_components/howler.js/dist/howler.min.js',
     'bower_components/jquery/dist/jquery.min.js',
     'bower_components/office-ui-fabric/dist/js/jquery.fabric.min.js',
-    './app/**/*.js',
     './assets/vendor/kage-engine/*.js'
   ],
   css: [
@@ -34,7 +34,7 @@ var paths = {
 };
 
 gulp.task('clean', function () {
-  return del('./build');
+  return del(['app/**/*.js', 'app/**/*.js.map','./build']);
 });
 
 gulp.task('carrier', function () {
@@ -51,7 +51,7 @@ gulp.task('templateCache', function () {
 gulp.task('deployCSS', function() {
  return gulp.src(paths.css)
  .pipe(cssmin())
- .pipe(concat('all.css'))
+ .pipe(concat('bundle.css'))
  .pipe(gulp.dest('./build'));
 });
 
@@ -65,6 +65,13 @@ gulp.task('js', function () {
   .pipe(gulp.dest('./build'));
 });
 
+// Build Angular App files via Webpack
+gulp.task('js::webpack', function () {
+  return gulp.src('app/app.js')
+    .pipe(webpack(require('./webpack.config.js')))
+    .pipe(gulp.dest('./build'));
+});
+
 gulp.task('inject', function () {
  return gulp.src('./index.html')
  .pipe(inject(gulp.src(paths.buildjs, {read: false}), {relative: true, ignorePath: 'build'}))
@@ -72,11 +79,12 @@ gulp.task('inject', function () {
  .pipe(gulp.dest('./build'));
 });
 
-gulp.task('build', function (callback) {
+gulp.task('build::dev', function (callback) {
   runSequence(
     'clean',
     'templateCache',
     'js',
+    'js::webpack',
     'deployCSS',
     'carrier',
     'inject',
@@ -84,12 +92,28 @@ gulp.task('build', function (callback) {
   );
 });
 
-gulp.task('serve', function (){
+gulp.task('serve::prod', function (){
   var bs = require('browser-sync').create();
   bs.init({
     startPath: '/',
     server: {
       baseDir: './'
+    }
+  });
+})
+
+
+gulp.task('serve::dev', ['build::dev'], function (){
+  var bs = require('browser-sync').create();
+  bs.init({
+    startPath: '/',
+    server: {
+      baseDir: './build',
+      routes: {
+        '/assets': './assets',  // dev only: serve audio files locally
+                                // we need this route because `assets` is not copied to the `build` folder
+        '/favicon.ico': './favicon.ico'                       
+      }
     }
   });
 })
