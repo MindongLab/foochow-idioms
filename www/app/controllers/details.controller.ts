@@ -28,7 +28,12 @@ function DetailsController($q, $scope, $rootScope,
     };
 
     $scope.getAbsoluteAudioUrl = function (filename) {
-        return SERVER_AUDIO_URL + filename.replace('.wma', '.mp3');
+        if (filename === undefined) {
+            return '';            
+        }
+        else {
+            return SERVER_AUDIO_URL + filename.replace('.wma', '.mp3');
+        }
     };
 
     // load idiom by text
