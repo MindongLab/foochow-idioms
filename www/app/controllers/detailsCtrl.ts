@@ -1,7 +1,4 @@
 "use strict";
-// workaround for global variables
-declare var Howl: any;
-declare var Tether: any;
 
 var DictUtils = require('../js/utils');
 
@@ -21,8 +18,6 @@ function DetailsCtrl($q, $scope, $rootScope,
     $scope.highlight = [];
     $scope.highlightAnno = [];
 
-    $scope.isAudioPlaying = false;
-
     console.log('detailsCtrl $scope init');
     console.log($routeParams);
     switchToIdiom($routeParams.idiomtext);
@@ -32,30 +27,8 @@ function DetailsCtrl($q, $scope, $rootScope,
         $rootScope.$emit("toggleSidebar", {'state': true});
     };
 
-    $scope.playButtonClicked = function (filename) {
-        if (!$scope.isAudioPlaying) {
-            $scope.isAudioPlaying = true;
-            var uri = SERVER_AUDIO_URL + filename.replace('.wma', '.mp3');
-            var sound = new Howl({
-              src: [uri],
-              onend: function() {
-                console.log('Audio playback finished!');
-                $scope.isAudioPlaying = false;
-                $scope.$apply();
-              }.bind(this),
-              onplayerror: function() {
-                console.log('Audio playback failed!');
-                $scope.isAudioPlaying = false;
-                $scope.$apply();
-              }.bind(this),
-              onloaderror: function() {
-                console.log('Audio failed to load!');
-                $scope.isAudioPlaying = false;
-                $scope.$apply();
-              }.bind(this),
-            });
-            sound.play();
-        }
+    $scope.getAbsoluteAudioUrl = function (filename) {
+        return SERVER_AUDIO_URL + filename.replace('.wma', '.mp3');
     };
 
     // load idiom by text

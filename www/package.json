@@ -20,6 +20,7 @@
     "gulp-sourcemaps": "^2.6.1",
     "gulp-strip-debug": "^1.1.0",
     "gulp-uglify": "^3.0.0",
+    "html-loader": "^0.5.1",
     "run-sequence": "^2.1.0",
     "source-map-loader": "^0.2.1",
     "typescript": "^2.5.2",

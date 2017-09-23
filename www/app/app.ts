@@ -30,5 +30,6 @@ angular.module('app', ['ngRoute'])
         });
 }]);
 
+require('./components');
 require('./controllers');
 require('./services');
