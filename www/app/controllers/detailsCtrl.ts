@@ -5,13 +5,24 @@ declare var Tether: any;
 
 var DictUtils = require('../js/utils');
 
-DetailsCtrl.$inject  = ['$q','$scope', '$rootScope', '$location', '$routeParams', '$sce', 'DataService', "KageService", "SERVER_AUDIO_URL"];
+DetailsCtrl.$inject  = ['$q', 
+                        '$scope',
+                        '$rootScope', 
+                        '$location', 
+                        '$routeParams', 
+                        '$sce', 
+                        'DataService', 
+                        'KageService', 
+                        'SERVER_AUDIO_URL'];
 
 function DetailsCtrl($q, $scope, $rootScope, 
                      $location, $routeParams, $sce, dataService, kageService, SERVER_AUDIO_URL) {
 
     $scope.highlight = [];
     $scope.highlightAnno = [];
+
+    $scope.isAudioPlaying = false;
+
     console.log('detailsCtrl $scope init');
     console.log($routeParams);
     switchToIdiom($routeParams.idiomtext);
@@ -22,13 +33,32 @@ function DetailsCtrl($q, $scope, $rootScope,
     };
 
     $scope.playButtonClicked = function (filename) {
-        var uri = SERVER_AUDIO_URL + filename.replace('.wma', '.mp3');
-        var sound = new Howl({
-                src: [uri]
-            }).play();
+        if (!$scope.isAudioPlaying) {
+            $scope.isAudioPlaying = true;
+            var uri = SERVER_AUDIO_URL + filename.replace('.wma', '.mp3');
+            var sound = new Howl({
+              src: [uri],
+              onend: function() {
+                console.log('Audio playback finished!');
+                $scope.isAudioPlaying = false;
+                $scope.$apply();
+              }.bind(this),
+              onplayerror: function() {
+                console.log('Audio playback failed!');
+                $scope.isAudioPlaying = false;
+                $scope.$apply();
+              }.bind(this),
+              onloaderror: function() {
+                console.log('Audio failed to load!');
+                $scope.isAudioPlaying = false;
+                $scope.$apply();
+              }.bind(this),
+            });
+            sound.play();
+        }
     };
 
-    //loadIdiom
+    // load idiom by text
     function switchToIdiom (text) {
         if (text) {
             dataService.getIdiomByText(text).then(function (r) {
