@@ -52,10 +52,7 @@ function DetailsController($q, $scope, $rootScope,
                 for (i=0; i<glyphs.length; ++i) {
                     if ((glyphs[i][0]=='{' && glyphs[i][glyphs[i].length-1]=="}")
                         || DictUtils.extendedGlyphs.indexOf(glyphs[i]) != -1) {
-                        kageService.getGlyphImage(glyphs[i],200,i).then(function (r) {
-                            console.log(r.id);
-                            $scope.field_text[r.id]['imgsrc'] = r.data;
-                        })
+                            $scope.field_text[i]['renderByCanvas'] = true;
                     }
                 }
 
