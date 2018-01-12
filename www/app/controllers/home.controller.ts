@@ -23,16 +23,6 @@ function HomeController($scope, $rootScope, $location, kageService) {
         }
     };
 
-    $scope.draw = function () {
-        var can = document.createElement('canvas');
-        can.height=300;
-        can.width=300;
-        kageService.getKage("𣍐", can).then(function () {
-            console.log(can.toDataURL());
-        });
-
-    }
-
 };
 
 module.exports = HomeController;

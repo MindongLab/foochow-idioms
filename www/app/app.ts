@@ -1,33 +1,42 @@
 "use strict";
-angular.module('app', ['ngRoute'])
-.constant("SERVER_API_URL","http://127.0.0.1:5000/api")
+angular.module('app', ['ui.router'])
+.constant("SERVER_API_URL","http://fiapi.radiumz.org:2052/api")
 .constant("SERVER_AUDIO_URL","/assets/audio/")
 
-.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider
-        .when('/', {
+.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state({
+            name: 'home',
+            url: '/',
             templateUrl: 'app/views/welcome.tpl.html',
             controller: 'homeController'
         })
-        .when('/idiom/:idiomtext*', {
+        .state({
+            name: 'showidiom',
+            url: '/idiom/{idiomtext}',
             templateUrl: 'app/views/showDetails.tpl.html',
             controller: 'detailsController',
             caseInsensitiveMatch: true
         })
-        .when('/help', {
+        .state({
+            name: 'showhelp',
+            url: '/help',
             templateUrl: 'app/views/help.tpl.html'
             // controller: 'mainCtrl'
         })
-        .when('/tags', {
+        .state({
+            name: 'showcategories',
+            url: '/tags', 
             templateUrl: 'app/views/tags.tpl.html' ,
             controller: 'tagsController'
         })
-        .when('/apps', {
+        .state({
+            name: 'showapps',
+            url: '/apps', 
             templateUrl: 'app/views/apps.tpl.html'
-        })
-        .otherwise({
-            redirectTo: '/'
         });
+
+        $urlRouterProvider.otherwise('/');
 }]);
 
 require('./components');
