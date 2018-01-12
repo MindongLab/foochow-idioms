@@ -34,7 +34,8 @@ var paths = {
     './assets/**/*.mp3'
   ],
   assets_prod: [
-    './assets/**/*.png',
+    './assets/**/*.png', 
+    './assets/**/*.mp3'
   ],
   publish_root_files: [
     'CNAME',

@@ -16,6 +16,6 @@ deploy:
   repo: MindongLab/foochow-idioms-web
   github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
   keep-history: true
-  target-branch: master
+  target-branch: gh-pages
   on:
-    branch: radium/ci
+    branch: master
