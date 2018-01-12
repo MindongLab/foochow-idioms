@@ -1,10 +1,10 @@
 # Web UI for Foochow Idioms
 
-## Build steps
+## Local development
 ```
-npm install
+yarn install
 bower install
-gulp serve::dev
+gulp serve:dev
 ```
 
 ## Coding Style

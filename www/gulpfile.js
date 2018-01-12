@@ -9,6 +9,8 @@ var cssmin = require('gulp-cssmin');
 var inject = require('gulp-inject');
 var runSequence = require('run-sequence');
 var webpack = require('webpack-stream');
+var console = require('console');
+var bs = require('browser-sync');
 
 var paths = {
   js: [
@@ -28,7 +30,6 @@ var paths = {
     './assets/**/*.png',
     './assets/**/*.mp3'
   ],
-  templates: ['./**/*.tpl.html'],
   buildjs: ['./build/**/*.js'],
   buildcss: ['./build/**/*.css']
 };
@@ -37,25 +38,19 @@ gulp.task('clean', function () {
   return del(['app/**/*.js', 'app/**/*.js.map','./build']);
 });
 
-gulp.task('carrier', function () {
+gulp.task('assets', function () {
   return gulp.src(paths.assets)
     .pipe(gulp.dest('./build/assets'))
 });
 
-gulp.task('templateCache', function () {
-  return gulp.src(paths.templates)
-    .pipe(templateCache({module: 'app'}))
-    .pipe(gulp.dest('./build'))
-});
-
-gulp.task('deployCSS', function() {
+gulp.task('style:bundle', function() {
  return gulp.src(paths.css)
  .pipe(cssmin())
  .pipe(concat('bundle.css'))
  .pipe(gulp.dest('./build'));
 });
 
-gulp.task('js', function () {
+gulp.task('js:vendor', function () {
   return gulp.src(paths.js)
   .pipe(sourcemaps.init())
   .pipe(stripDebug())
@@ -66,8 +61,8 @@ gulp.task('js', function () {
 });
 
 // Build Angular App files via Webpack
-gulp.task('js::webpack', function () {
-  return gulp.src('app/app.js')
+gulp.task('js:webpack', function () {
+  return gulp.src('app/app.ts')
     .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest('./build'));
 });
@@ -79,21 +74,23 @@ gulp.task('inject', function () {
  .pipe(gulp.dest('./build'));
 });
 
-gulp.task('build::dev', function (callback) {
-  runSequence(
+gulp.task('build:dev', 
+  gulp.series(
     'clean',
-    'templateCache',
-    'js',
-    'js::webpack',
-    'deployCSS',
-    'carrier',
-    'inject',
-    callback
-  );
-});
+    gulp.parallel('js:vendor', 'js:webpack', 'style:bundle', 'assets'),
+    'inject'
+  )
+);
 
-gulp.task('serve::prod', function (){
-  var bs = require('browser-sync').create();
+gulp.task('build:partial', 
+  gulp.series(
+    gulp.parallel('js:webpack', 'style:bundle'),
+    'inject'
+  )
+);
+
+gulp.task('serve:prod', function (){
+  bs.create();
   bs.init({
     startPath: '/',
     server: {
@@ -102,9 +99,16 @@ gulp.task('serve::prod', function (){
   });
 })
 
-
-gulp.task('serve::dev', ['build::dev'], function (){
-  var bs = require('browser-sync').create();
+gulp.task('serve:dev', gulp.series('build:dev', function (){
+  bs.create();
+  gulp.watch(["app/**/*.ts",
+              "app/**/*.html"], 
+              gulp.series('build:partial', 
+              function (done) {
+                bs.reload();
+                done();
+              })
+  );
   bs.init({
     startPath: '/',
     server: {
@@ -116,4 +120,4 @@ gulp.task('serve::dev', ['build::dev'], function (){
       }
     }
   });
-})
+}));
