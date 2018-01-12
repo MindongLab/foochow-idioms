@@ -1,0 +1,17 @@
+dist: trusty
+sudo: false
+language: node_js
+node_js: node
+before_script:
+  - npm install -g gulp-cli bower
+after_install:
+  - bower install
+script:
+  - gulp build:prod
+
+before_deploy: git config --global user.email publish@travis.github && git config --global user.name "Travis"
+deploy:
+  - edge: true
+    skip_cleanup: true
+    provider: script
+    script: gulp deploy
