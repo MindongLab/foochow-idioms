@@ -1,9 +1,9 @@
 'use strict';
 
-HomeController.$inject = ['$scope', '$rootScope', '$location', "KageService"];
+function LandingPageController($scope, $rootScope, $location, kageService) {
+    var ctrl = this;
 
-function HomeController($scope, $rootScope, $location, kageService) {
-    $scope.featureClicked = function (id) {
+    ctrl.featureClicked = function (id) {
         switch (id)
         {
             case 1:  // List All
@@ -25,5 +25,11 @@ function HomeController($scope, $rootScope, $location, kageService) {
 
 };
 
-module.exports = HomeController;
+LandingPageController.$inject = ['$scope', '$rootScope', '$location', "KageService"];;
 
+var LandingPage = {
+    template: require('./landing-page.component.html'),
+    controller: LandingPageController
+}
+
+module.exports = LandingPage;
