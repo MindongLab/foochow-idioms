@@ -25,7 +25,7 @@ module.exports = {
     module: {
         rules: [
             { test: /\.(t|j)s$/, use: { loader: 'awesome-typescript-loader?{tsconfig: "tsconfig.json"}' } },
-            { test: /\.(html)$/, use: { loader: 'html-loader'} },
+            { test: /\.(html)$/, use: { loader: 'html-loader', options: { attrs: false }}},
             // addition - add source-map support 
             { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
         ]

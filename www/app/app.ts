@@ -8,8 +8,7 @@ angular.module('app', ['ui.router'])
         .state({
             name: 'home',
             url: '/',
-            templateUrl: 'app/views/welcome.tpl.html',
-            controller: 'homeController'
+            component: 'landingPage'
         })
         .state({
             name: 'showidiom',
@@ -20,24 +19,21 @@ angular.module('app', ['ui.router'])
         .state({
             name: 'showhelp',
             url: '/help',
-            templateUrl: 'app/views/help.tpl.html'
-            // controller: 'mainCtrl'
+            component: 'helpPage'
         })
         .state({
             name: 'showcategories',
             url: '/tags', 
-            templateUrl: 'app/views/tags.tpl.html' ,
-            controller: 'tagsController'
+            component: 'categoryPage'
         })
         .state({
             name: 'showapps',
             url: '/apps', 
-            templateUrl: 'app/views/apps.tpl.html'
+            component: 'appsPage'
         });
 
         $urlRouterProvider.otherwise('/');
 }]);
 
 require('./components');
-require('./controllers');
 require('./services');
