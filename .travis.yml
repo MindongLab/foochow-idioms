@@ -1,0 +1,21 @@
+dist: trusty
+sudo: false
+language: node_js
+node_js: node
+before_script:
+  - npm install -g gulp-cli bower
+  - cd ./www
+  - yarn install
+  - bower install
+script:
+  - gulp build:prod
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local-dir: build
+  repo: MindongLab/foochow-idioms-web
+  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  keep-history: true
+  target-branch: gh-pages
+  on:
+    branch: master

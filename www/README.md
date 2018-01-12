@@ -1,8 +1,11 @@
 # Web UI for Foochow Idioms
 
-## Build steps
+## Local development
 ```
-npm install
+yarn install
 bower install
-gulp serve::dev
+gulp serve:dev
 ```
+
+## Coding Style
+Follow the [AngularJS Style Guide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#controllers) for now.

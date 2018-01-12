@@ -187,11 +187,3 @@ body{
     color: #EAEAEA;
     line-height: 42px;
 }
-
-.calloutHide {
-    display: none;
-}
-
-.calloutShow {
-    display:block;
-}
