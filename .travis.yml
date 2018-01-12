@@ -11,7 +11,10 @@ script:
 
 before_deploy: git config --global user.email publish@travis.github && git config --global user.name "Travis"
 deploy:
-  - edge: true
-    skip_cleanup: true
-    provider: script
-    script: gulp deploy
+  provider: pages
+  skip-cleanup: true
+  local-dir: build
+  repo: MindongLab/foochow-idioms-web
+  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  keep-history: true
+  target-branch: master
