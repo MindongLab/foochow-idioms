@@ -5,7 +5,6 @@ var angular = require('angular');
 angular.module('app')
   .controller('calloutController', require('./callout.controller'))
   .controller('detailsController', require('./details.controller'))
-  .controller('headerController', require('./header.controller'))
   .controller('homeController', require('./home.controller'))
   .controller('sidebarController', require('./sidebar.controller'))
   .controller('tagsController', require('./tags.controller'));

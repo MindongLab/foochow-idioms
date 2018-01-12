@@ -1,8 +1,4 @@
-"use strict";
-
-HeaderController.$inject =  ['$scope', '$rootScope', '$location'];
-
-$ = require('jquery');
+'use strict';
 
 function HeaderController($scope, $rootScope, $location) {
     $scope.isOpen = false;
@@ -35,9 +31,8 @@ function HeaderController($scope, $rootScope, $location) {
         $rootScope.$emit('toggleSidebar');
     };
 
-
     function changeState(state) {
-        if (state!=undefined) {
+        if (state != undefined) {
             if (state == false)
                 $scope.isOpen = false;
             else if (state == true)
@@ -60,5 +55,11 @@ function HeaderController($scope, $rootScope, $location) {
     //  $scope.init();
 };
 
-module.exports = HeaderController;
+HeaderController.$inject = ['$scope', '$rootScope', '$location'];
 
+var Header = {
+    template: require('./header.component.html'),
+    controller: HeaderController
+}
+
+module.exports = Header;

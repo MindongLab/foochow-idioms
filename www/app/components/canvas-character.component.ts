@@ -1,7 +1,5 @@
 'use strict';
 
-'use strict';
-
 // 用於顯示非Unicode或Unicode擴展區漢字的元件
 
 function CanvasCharacterController($scope, KageService) {
