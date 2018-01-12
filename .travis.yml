@@ -18,4 +18,4 @@ deploy:
   keep-history: true
   target-branch: master
   on:
-    branch: master
+    branch: radium/ci
