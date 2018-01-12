@@ -1,14 +1,12 @@
 'use strict';
 
 $ = require('jquery');
-function SharePanelController($scope) {
-    
-    this.$onInit = function (){
+function SharePanelController() {
+
+    this.$onInit = function () {
         $(".ms-Panel").Panel();
     }
 };
-
-SharePanelController.$inject = ['$scope'];
 
 var SharePanel = {
     template: require('./share-panel.component.html'),

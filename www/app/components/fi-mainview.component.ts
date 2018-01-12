@@ -1,10 +1,10 @@
 'use strict';
 
-function FiMainviewController($scope) {
+function FiMainviewController() {
 
 };
 
-FiMainviewController.$inject = ['$scope'];
+FiMainviewController.$inject = [];
 
 var FiMainview = {
     template: require('./fi-mainview.component.html'),

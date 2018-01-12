@@ -14,11 +14,11 @@ function LandingPageController($scope, $rootScope, $location, kageService) {
                 break;
             case 2:
                 $location.path('/tags');
-                $rootScope.$emit("toggleSidebar", {'state':false});
+                $rootScope.$emit("toggleSidebar", {'state': false});
                 break;
             case 3:
                 $location.path('/help');
-                $rootScope.$emit("toggleSidebar", {'state':false});
+                $rootScope.$emit("toggleSidebar", {'state': false});
                 break;
         }
     };

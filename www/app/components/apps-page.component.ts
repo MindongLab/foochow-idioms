@@ -1,10 +1,8 @@
 'use strict';
 
-function AppsPageController($scope) {
+function AppsPageController() {
 
 };
-
-AppsPageController.$inject = ['$scope'];
 
 var AppsPage = {
     template: require('./apps-page.component.html'),
