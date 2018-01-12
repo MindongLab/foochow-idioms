@@ -17,8 +17,7 @@ function DataService($http, $q, SERVER_API_URL) {
         }).catch(function () {
             console.log('DataService: Error in getAllIdioms()');
             return $q.reject('e');
-        })
-            );
+        }));
     }
 
     function getAllTags() {
@@ -27,8 +26,7 @@ function DataService($http, $q, SERVER_API_URL) {
         }).catch(function () {
             console.log('DataService: Error in getAllTags()');
             return $q.reject('e');
-        })
-        );
+        }));
     }
 
     function getIdiomsByTag(tagName) {

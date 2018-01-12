@@ -14,8 +14,7 @@ angular.module('app', ['ui.router'])
         .state({
             name: 'showidiom',
             url: '/idiom/{idiomtext}',
-            templateUrl: 'app/views/showDetails.tpl.html',
-            controller: 'detailsController',
+            component: 'viewIdiomPage',
             caseInsensitiveMatch: true
         })
         .state({

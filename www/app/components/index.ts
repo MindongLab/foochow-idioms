@@ -8,4 +8,5 @@ angular.module('app')
     .component('fiHeader', require('./header.component'))
     .component('fiMainview', require('./fi-mainview.component'))
     .component('fiSidebar', require('./fi-sidebar.component'))
+    .component('viewIdiomPage', require('./view-idiom-page.component'))
     .component('sharePanel', require('./share-panel.component'));

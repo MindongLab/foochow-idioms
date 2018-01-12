@@ -2,7 +2,9 @@
     <div id="detailsHeader">
         <div class="ms-font-su">
             <span ng-repeat="char in field_text track by $index" ng-class="{highlight: highlight[$index]}"><a ng-if="char.renderByCanvas !== true">{{char.text}}</a><canvas-character ids="{{char.text}}" size="42" ng-if="char.renderByCanvas"></canvas-character></span>
-            <span class="shareButton ms-PanelAction-open"><i class="ms-Icon ms-Icon--share"></i></span>
+            <span class="shareButton ms-PanelAction-open">
+                <i class="ms-Icon ms-Icon--share"></i>
+            </span>
         </div>
         <div>
             <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter playLabel">发音</span>
@@ -19,24 +21,24 @@
             <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter charsymbol">案</span>
             <span class="ms-font-l">{{::result['field_notes']}}</span>
         </div>
-        
-    
+
+
         <h2 class="ms-font-xl ms-fontWeight-semibold">单字注释：</h2>
         <ul class="ms-font-l">
-            <li ng-mouseenter="highOn($index)" ng-mouseleave="highOff($index)" ng-repeat="item in ::result['field_annotations'] track by $index"><span ng-class="{highlight: highlightAnno[$index]}">{{::item["text"]}}</span><span>: </span><span>{{::item["explanation"]}}</span> </li>
+            <li ng-mouseenter="highOn($index)" ng-mouseleave="highOff($index)" ng-repeat="item in ::result['field_annotations'] track by $index">
+                <span ng-class="{highlight: highlightAnno[$index]}">{{::item["text"]}}</span>
+                <span>: </span>
+                <span>{{::item["explanation"]}}</span>
+            </li>
         </ul>
         <div>
             <button ng-repeat="tag in ::result['field_tags']" class="ms-Button ms-Button--primary" ng-click="tagClicked(tag)">
                 <span class="ms-Button-icon">
                     <i class="ms-Icon ms-Icon--plus"></i>
-                </span> 
-                <span class="ms-Button-label">{{::tag}}</span> 
+                </span>
+                <span class="ms-Button-label">{{::tag}}</span>
             </button>
         </div>
-                   
+
     </div>
 </div>
-
-
-
- 

@@ -1,20 +1,21 @@
-"use strict";
+'use strict';
 
 var DictUtils = require('../js/utils');
-
-DetailsController.$inject  = ['$q', 
-                        '$scope',
-                        '$rootScope', 
-                        '$location', 
-                        '$stateParams', 
-                        '$sce', 
-                        'DataService', 
-                        'KageService', 
-                        'SERVER_AUDIO_URL'];
-
-function DetailsController($q, $scope, $rootScope, 
-                     $location, $routeParams, $sce, dataService, kageService, SERVER_AUDIO_URL) {
-
+var $ = require('jquery');
+function ViewIdiomPageController($q,
+                                 $scope,
+                                 $rootScope, 
+                                 $location, 
+                                 $routeParams, 
+                                 $sce, 
+                                 dataService, 
+                                 kageService, 
+                                 SERVER_AUDIO_URL) {
+    var ctrl = this;
+    ctrl.$onInit = function (){
+        $(".ms-Panel").Panel();
+    };
+    
     $scope.highlight = [];
     $scope.highlightAnno = [];
 
@@ -95,10 +96,21 @@ function DetailsController($q, $scope, $rootScope,
 
     });
 
-    $scope.$on("$viewContentLoaded", function() {
-        $(".ms-Panel").Panel();
-    })
-
 };
 
-module.exports = DetailsController;
+ViewIdiomPageController.$inject =['$q', 
+                                  '$scope',
+                                  '$rootScope', 
+                                  '$location', 
+                                  '$stateParams', 
+                                  '$sce', 
+                                  'DataService', 
+                                  'KageService', 
+                                  'SERVER_AUDIO_URL'];
+
+var ViewIdiomPage = {
+    template: require('./view-idiom-page.component.html'),
+    controller: ViewIdiomPageController
+}
+
+module.exports = ViewIdiomPage;
