@@ -18,15 +18,7 @@
 
 <body ng-app="app">
   <fi-header></fi-header>
-  <div id="mainContainer" ng-cloak>
-    <div id="sideBar" ng-controller="sidebarController" class="ms-bgColor-themeLight sideBarHide" ng-include="'app/views/sidebar.tpl.html'">
-    </div>
-    <div id="mainPane">
-      <div ng-view></div>
-    </div>
-  </div>
-
-
+  <fi-mainview></fi-mainview>
 
   <div class="ms-Panel">
     <div class="ms-Overlay ms-Overlay--dark ms-PanelAction-close"></div>
