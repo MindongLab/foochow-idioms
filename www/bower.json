@@ -15,7 +15,7 @@
   "dependencies": {
     "angular": "angularjs#1.5.0",
     "angular-route": "1.5.0",
-    "office-ui-fabric": "2.6.3",
+    "office-ui-fabric": "1.2.1",
     "howler.js": "howler#^2.0.4",
     "tether": "1.1.0",
     "jquery": "1.12.0"
