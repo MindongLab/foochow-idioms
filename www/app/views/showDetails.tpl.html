@@ -2,7 +2,7 @@
     <div id="detailsHeader">
         <div class="ms-font-su">
             <span ng-repeat="char in field_text track by $index" ng-class="{highlight: highlight[$index]}"><a ng-if="char.renderByCanvas !== true">{{char.text}}</a><canvas-character ids="{{char.text}}" size="42" ng-if="char.renderByCanvas"></canvas-character></span>
-            <span ng-init="initShare()" class="shareButton ms-PanelAction-open"><i class="ms-Icon ms-Icon--share"></i></span>
+            <span class="shareButton ms-PanelAction-open"><i class="ms-Icon ms-Icon--share"></i></span>
         </div>
         <div>
             <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter playLabel">发音</span>
