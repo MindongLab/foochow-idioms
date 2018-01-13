@@ -38,3 +38,5 @@ angular.module('app', ['ui.router'])
 
 require('./components');
 require('./services');
+
+angular.bootstrap(document.body, ['app'])
