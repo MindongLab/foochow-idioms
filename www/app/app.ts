@@ -39,4 +39,6 @@ angular.module('app', ['ui.router'])
 require('./components');
 require('./services');
 
-angular.bootstrap(document.body, ['app'])
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import { AppModule } from "./app.module";
+platformBrowserDynamic().bootstrapModule(AppModule);

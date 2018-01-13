@@ -1,11 +1,21 @@
 {
     "compilerOptions": {
-        "sourceMap": true,          // allow sourcemap support
- //       "strictNullChecks": true,   // enable strict null checks as a best practice
-        "module": "commonjs",            // specifiy module code generation
-        "target": "es5",            // specify ECMAScript target version
-        "allowJs": true,             // allow a partial TypeScript and JavaScript codebase  
-        "typeRoots": [ "./node_modules/@types" ]
+        "sourceMap": true, // allow sourcemap support
+        //       "strictNullChecks": true,   // enable strict null checks as a best practice
+        "module": "commonjs", // specifiy module code generation
+        "target": "es5", // specify ECMAScript target version
+        "lib": [
+            "es2015",
+            "dom"
+        ],
+        "allowJs": true, // allow a partial TypeScript and JavaScript codebase  
+        "typeRoots": [
+            "./node_modules/@types"
+        ],
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
     },
     "include": [
         "./app/"
