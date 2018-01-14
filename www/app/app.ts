@@ -37,8 +37,24 @@ angular.module('app', ['ui.router'])
 }]);
 
 require('./components');
-require('./services');
 
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import { AppModule } from "./app.module";
+import { FiAppComponent } from "./fi-app/fi-app.component";
+import { downgradeComponent, downgradeInjectable } from "@angular/upgrade/static";
+import { IdiomDataService } from "./idioms/idiom-data.service";
+import { TaxonomyTagComponent } from "./idioms/taxonomy-tag.component";
+import { KageService } from "./canvas-char/kage.service";
 platformBrowserDynamic().bootstrapModule(AppModule);
+
+angular.module('app')
+.directive(
+    'fiApp',
+    downgradeComponent({ component: FiAppComponent })
+  )
+.directive(
+    'taxonomyTag',
+    downgradeComponent({ component: TaxonomyTagComponent })
+)
+.factory('IdiomDataService', downgradeInjectable(IdiomDataService))
+.factory('KageService', downgradeInjectable(KageService))

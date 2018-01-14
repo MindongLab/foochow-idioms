@@ -1,10 +1,13 @@
+import { IdiomDataService } from "../idioms/idiom-data.service";
+
 'use strict';
 
-function CategoryPageController($scope, $rootScope, $location, dataService) {
+function CategoryPageController($scope, $rootScope, $location, idiomDataService) {
     var ctrl = this;
-    dataService.getAllTags().then(function (r) {
+    (idiomDataService as IdiomDataService).getAllTags().subscribe(
+    function (r) {
         ctrl.list = r;
-    })
+    });
     
     ctrl.tagClicked = function (tagName) {
         $rootScope.$emit("switchToTag", {'tag': tagName});
@@ -12,7 +15,7 @@ function CategoryPageController($scope, $rootScope, $location, dataService) {
     };
 }
 
-CategoryPageController.$inject =  ['$scope', '$rootScope', '$location', "DataService"];
+CategoryPageController.$inject =  ['$scope', '$rootScope', '$location', "IdiomDataService"];
 
 var CategoryPage = {
     template: require('./category-page.component.html'),

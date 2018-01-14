@@ -20,7 +20,7 @@ function CanvasCharacterController($scope, KageService) {
             'display': 'inline-block',
             'vertical-align': -5
         };
-        KageService.getGlyphImage(requestedText, 200, 1).then(
+        KageService.getGlyphImage(requestedText, 200, 1).subscribe(
             (r)=> {
                 console.log('got it:',r);
                 ctrl.imgBase64Url = r.data;

@@ -1,6 +1,7 @@
+import { DictUtil } from "../utils/DictUtil";
+
 'use strict';
 
-var DictUtils = require('../js/utils');
 var $ = require('jquery');
 function ViewIdiomPageController($q,
                                  $scope,
@@ -23,7 +24,7 @@ function ViewIdiomPageController($q,
     console.log($routeParams);
     switchToIdiom($routeParams.idiomtext);
 
-    $scope.tagClicked = function (tagName) {
+    ctrl.tagClicked = function (tagName) {
         $rootScope.$emit("switchToTag", {'tag': tagName});
         $rootScope.$emit("toggleSidebar", {'state': true});
     };
@@ -40,9 +41,9 @@ function ViewIdiomPageController($q,
     // load idiom by text
     function switchToIdiom (text) {
         if (text) {
-            dataService.getIdiomByText(text).then(function (r) {
+            dataService.getIdiomByText(text).subscribe(function (r) {
                 $scope.result = r;
-                var glyphs = DictUtils.getChars(r['field_text']);
+                var glyphs = (new DictUtil).getChars(r['field_text']);  
                 var i;
                 var list=[];
                 for (i=0; i<glyphs.length; ++i) {
@@ -52,14 +53,15 @@ function ViewIdiomPageController($q,
                 $scope.field_text = list;
                 for (i=0; i<glyphs.length; ++i) {
                     if ((glyphs[i][0]=='{' && glyphs[i][glyphs[i].length-1]=="}")
-                        || DictUtils.extendedGlyphs.indexOf(glyphs[i]) != -1) {
+                        || (new DictUtil).extendedGlyphs.indexOf(glyphs[i]) != -1) {
                             $scope.field_text[i]['renderByCanvas'] = true;
                     }
                 }
 
-            }).catch(function () {
-                console.log('detailsCtrl: view change failed.');
             });
+            //catch(function () {
+            //    console.log('detailsCtrl: view change failed.');
+            //});
         }
     };
 
@@ -104,7 +106,7 @@ ViewIdiomPageController.$inject =['$q',
                                   '$location', 
                                   '$stateParams', 
                                   '$sce', 
-                                  'DataService', 
+                                  'IdiomDataService', 
                                   'KageService', 
                                   'SERVER_AUDIO_URL'];
 
