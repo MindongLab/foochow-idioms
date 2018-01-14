@@ -55,17 +55,3 @@ export class IdiomDataService {
             });
     }
 }
-
-export interface IdiomEntry {
-    Text: string,
-    Notes: string,
-    Annotations: AnnotationEntry[],
-    AudioFile: string,
-    Source: object
-}
-
-export interface AnnotationEntry {
-    Text: string,
-    Explanation: string,
-    Indices: number[]
-}
