@@ -32,12 +32,7 @@
             </li>
         </ul>
         <div>
-            <button ng-repeat="tag in ::result['field_tags']" class="ms-Button ms-Button--primary" ng-click="tagClicked(tag)">
-                <span class="ms-Button-icon">
-                    <i class="ms-Icon ms-Icon--plus"></i>
-                </span>
-                <span class="ms-Button-label">{{::tag}}</span>
-            </button>
+            <taxonomy-tag ng-repeat="tag in ::result['field_tags']" [text]="tag" (on-clicked)="$ctrl.tagClicked(tag)"></taxonomy-tag>
         </div>
 
     </div>
