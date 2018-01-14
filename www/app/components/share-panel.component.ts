@@ -1,6 +1,6 @@
 'use strict';
 
-$ = require('jquery');
+var $ = require('jquery');
 function SharePanelController() {
 
     this.$onInit = function () {

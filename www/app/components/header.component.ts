@@ -1,5 +1,7 @@
 'use strict';
 
+var $ = require('jquery');
+
 function HeaderController($scope, $rootScope, $location) {
     $scope.isOpen = false;
 

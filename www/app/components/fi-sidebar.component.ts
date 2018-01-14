@@ -1,6 +1,6 @@
 'use strict';
 
-$ = require('jquery');
+var $ = require('jquery');
 function FiSidebarController($scope, $rootScope, $location, dataService) {
 
     var ctrl = this;
@@ -32,7 +32,7 @@ function FiSidebarController($scope, $rootScope, $location, dataService) {
     function switchToTag(tag) {
         if (tag && tag!='') {
             ctrl.loading = true;
-            dataService.getIdiomsByTag(tag).then(function (r) {
+            dataService.getIdiomsByTag(tag).subscribe(function (r) {
                 ctrl.list = r;
                 ctrl.tagName =  tag;
                 ctrl.loading= false;
@@ -46,7 +46,7 @@ function FiSidebarController($scope, $rootScope, $location, dataService) {
 
     function loadAll() {
         ctrl.loading=true;
-        dataService.getAllIdioms().then(function (r) {
+        dataService.getAllIdioms().subscribe(function (r) {
             ctrl.list = r;
             ctrl.loaded = true;
             ctrl.loading= false;
@@ -102,7 +102,7 @@ function FiSidebarController($scope, $rootScope, $location, dataService) {
 
 };
 
-FiSidebarController.$inject = ['$scope', '$rootScope', '$location', 'DataService'];
+FiSidebarController.$inject = ['$scope', '$rootScope', '$location', 'IdiomDataService'];
 
 var FiSidebar = {
     template: require('./fi-sidebar.component.html'),
