@@ -9,6 +9,7 @@ import { IdiomDataService } from './idioms/idiom-data.service';
 import { HttpModule } from '@angular/http';
 import { TaxonomyTagComponent } from './idioms/taxonomy-tag.component';
 import { KageService } from './canvas-char/kage.service';
+import { PlayerButtonComponent } from './idioms/player-button.component';
 
 @NgModule({
     imports: [
@@ -19,12 +20,14 @@ import { KageService } from './canvas-char/kage.service';
     declarations: [
         FiAppComponent,
         TaxonomyTagComponent,
+        PlayerButtonComponent,
         FiHeaderDirective,
         FiMainviewDirective
     ],
     entryComponents: [
         FiAppComponent,
-        TaxonomyTagComponent
+        TaxonomyTagComponent,
+        PlayerButtonComponent
     ],
     providers: [
         IdiomDataService,

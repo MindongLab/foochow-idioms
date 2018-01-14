@@ -1,0 +1,7 @@
+<button class="ms-Button ms-Button--hero " (click)="play()">
+    <span class="ms-Button-icon">
+        <i *ngIf="!isAudioPlaying" class="ms-Icon ms-Icon--play"></i>
+        <i *ngIf="isAudioPlaying" class="ms-Icon ms-Icon--ellipsis"></i>
+    </span> 
+    <span class="ms-Button-label">{{text}}</span>
+</button>
