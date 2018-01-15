@@ -1,5 +1,5 @@
 <div style="display:flex; flex-direction:row;">
-    <div class="tagButton" ng-class="{'tagButton-hide':!(tagName.length)}"style="order:1">
+    <div class="tagButton" ng-class="{'tagButton-hide':!(tagName.length)}" style="order:1">
         <div class="tagButton-text ms-Font-m">
             {{tagName}}
         </div>
@@ -15,8 +15,10 @@
     </div>
 </div>
 <ul class="ms-List resultList">
-<div ng-repeat="item in filteredList = (list | filter:filterString)" class="cListItem is-selectable" ng-click="listItemClicked(item)">
-  <span class="cListItem-primaryText ms-Font-xl">{{item}}</span>
+<div ng-repeat="item in filteredList = (list | filter:filterString)" class="cListItem is-selectable" ng-click="listItemClicked(item.toString())">
+  <span class="cListItem-primaryText ms-Font-xl">
+      <span ng-repeat="char in item.asArray track by $index"><a ng-if="item.renderByCanvas($index) !== true">{{char}}</a><canvas-character ids="{{char}}" size="21" ng-if="item.renderByCanvas($index)"></canvas-character></span>
+  </span>
 </div>
     <div ng-show="loading" class="ms-Spinner"></div>
 <div ng-show="loaded && filteredList.length==0" class="ms-Font-xl">没有符合条件的结果</div>

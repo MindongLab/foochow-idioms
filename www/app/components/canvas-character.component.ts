@@ -13,18 +13,18 @@ function CanvasCharacterController($scope, KageService) {
     function updateText() {
         var requestedText = (ctrl.ids != '') ? ctrl.ids : ctrl.char;
         ctrl.altText = requestedText;
-        console.log("[canvas-character] requesting IDS "+requestedText);
+        //console.log("[canvas-character] requesting IDS "+requestedText);
         ctrl.style = {
             'height': ctrl.size,
             'width': ctrl.size, 
             'background': 'url("'+ctrl.imgBase64Url+'")',
             'background-size': 'contain',
             'display': 'inline-block',
-            'vertical-align': -5
+            'vertical-align': "-5%"
         };
         KageService.getGlyphImage(requestedText, 200, 1).then(
             (r)=> {
-                console.log('got it:',r);
+                //console.log('got it:',r);
                 ctrl.imgBase64Url = r.data;
                 ctrl.style['background'] = 'url("'+ctrl.imgBase64Url+'")';
             }
