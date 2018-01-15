@@ -47,6 +47,7 @@ import { TaxonomyTagComponent } from "./idioms/taxonomy-tag.component";
 import { KageService } from "./canvas-char/kage.service";
 import { PlayerButtonComponent } from "./idioms/player-button.component";
 import { IdiomMainDisplayComponent } from "./idioms/idiom-main-display.component";
+import { SearchBoxComponent } from "./fi-app/search-box.component";
 platformBrowserDynamic().bootstrapModule(AppModule);
 
 angular.module('app')
@@ -54,5 +55,6 @@ angular.module('app')
     .directive('taxonomyTag', downgradeComponent({ component: TaxonomyTagComponent }))
     .directive('playerButton', downgradeComponent({ component: PlayerButtonComponent }))
     .directive('idiomMainDisplay', downgradeComponent({ component: IdiomMainDisplayComponent }))
+    .directive('searchBox', downgradeComponent({ component: SearchBoxComponent }))
     .factory('IdiomDataService', downgradeInjectable(IdiomDataService))
     .factory('KageService', downgradeInjectable(KageService))

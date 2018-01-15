@@ -7,23 +7,27 @@ import { FiHeaderDirective } from './components/fi-header.directive';
 import { FiMainviewDirective } from './components/fi-mainview.directive';
 import { IdiomDataService } from './idioms/idiom-data.service';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import { TaxonomyTagComponent } from './idioms/taxonomy-tag.component';
 import { KageService } from './canvas-char/kage.service';
 import { PlayerButtonComponent } from './idioms/player-button.component';
 import { CanvasCharacterDirective } from './components/canvas-character.directive';
 import { IdiomMainDisplayComponent } from './idioms/idiom-main-display.component';
+import { SearchBoxComponent } from './fi-app/search-box.component';
 
 @NgModule({
     imports: [
         BrowserModule,
         UpgradeModule,
-        HttpModule
+        HttpModule,
+        FormsModule
     ],
     declarations: [
         FiAppComponent,
         TaxonomyTagComponent,
         PlayerButtonComponent,
         IdiomMainDisplayComponent,
+        SearchBoxComponent,
         FiHeaderDirective,
         FiMainviewDirective,
         CanvasCharacterDirective
@@ -32,7 +36,8 @@ import { IdiomMainDisplayComponent } from './idioms/idiom-main-display.component
         FiAppComponent,
         TaxonomyTagComponent,
         PlayerButtonComponent,
-        IdiomMainDisplayComponent
+        IdiomMainDisplayComponent,
+        SearchBoxComponent
     ],
     providers: [
         IdiomDataService,
