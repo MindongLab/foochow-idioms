@@ -1,3 +1,9 @@
 <div style="padding:20px">
-    <h2 class="ms-font-xl ms-fontColor-themePrimary" ng-repeat="item in $ctrl.list" ng-click="$ctrl.tagClicked(item)">{{item}}</h2>
+    <div class="ms-Grid">
+        <div class="ms-Grid-row">
+            <div class="ms-Grid-col ms-u-sm6 ms-u-md4 ms-u-lg2" ng-repeat="item in $ctrl.list">
+                <h2 class="ms-font-xl ms-fontColor-themePrimary" ng-click="$ctrl.tagClicked(item)">{{item}}</h2>
+            </div>
+        </div>
+    </div>
 </div>
