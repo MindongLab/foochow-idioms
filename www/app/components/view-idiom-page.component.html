@@ -1,0 +1,39 @@
+<div id="contentWrapper">
+    <div id="detailsHeader">
+        <div class="ms-font-su">
+            <idiom-main-display [text]="result.textHans.asArray" [highlighted]="$ctrl.highlightedRegions"></idiom-main-display>
+            <span class="shareButton ms-PanelAction-open">
+                <i class="ms-Icon ms-Icon--share"></i>
+            </span>
+        </div>
+        <div>
+            <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter playLabel">发音</span>
+            <player-button text="福州市区音" audio-url="{{getAbsoluteAudioUrl(result.audioFile)}}"></player-button>
+        </div>
+    </div>
+    <div id="detailsWrapper">
+        <div ng-show="result.metaphor.length>0">
+            <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter charsymbol">喻</span>
+            <span class="ms-font-l">{{::result.metaphor}}</span>
+        </div>
+        <p></p>
+        <div ng-show="result.notes.length>0">
+            <span class="ms-font-l ms-bgColor-redDark ms-fontColor-neutralLighter charsymbol">案</span>
+            <span class="ms-font-l">{{::result.notes}}</span>
+        </div>
+
+
+        <h2 class="ms-font-xl ms-fontWeight-semibold">单字注释：</h2>
+        <ul class="ms-font-l">
+            <li ng-mouseenter="highOn($index)" ng-mouseleave="highOff($index)" ng-repeat="item in ::result.annotations track by $index">
+                <span ng-class="{highlight: highlightAnno[$index]}">{{::item["text"]}}</span>
+                <span>: </span>
+                <span>{{::item["explanation"]}}</span>
+            </li>
+        </ul>
+        <div>
+            <taxonomy-tag ng-repeat="tag in ::result.tags" [text]="tag.tagName" (on-clicked)="$ctrl.tagClicked(tag.tagName)"></taxonomy-tag>
+        </div>
+
+    </div>
+</div>

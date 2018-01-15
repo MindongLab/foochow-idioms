@@ -1,7 +1,5 @@
 'use strict';
 
-'use strict';
-
 // 用於顯示非Unicode或Unicode擴展區漢字的元件
 
 function CanvasCharacterController($scope, KageService) {
@@ -22,7 +20,7 @@ function CanvasCharacterController($scope, KageService) {
             'display': 'inline-block',
             'vertical-align': "-5%"
         };
-        KageService.getGlyphImage(requestedText, 200, 1).then(
+        KageService.getGlyphImage(requestedText, 200, 1).subscribe(
             (r)=> {
                 //console.log('got it:',r);
                 ctrl.imgBase64Url = r.data;

@@ -1,0 +1,19 @@
+<div style="display:flex; flex-direction:row;">
+        <div class="tagButton" [ngClass]="{'tagButton-hide':!(filter && filter.length>0)}" style="order:1">
+            <div class="tagButton-text ms-Font-m">
+                {{filter}}
+            </div>
+            <div (click)="removeTagClicked()" class="tagButton-removeButton">
+                <i class="ms-Icon ms-Icon--x"></i>
+            </div>
+        </div>
+        <div class="filterSearch ms-SearchBox" style="order:2; flex-grow:100;">
+            <input class="ms-SearchBox-field SearchBox" [(ngModel)]="searchText" />
+            <label class="ms-SearchBox-label">
+                <i class="ms-SearchBox-icon ms-Icon ms-Icon--search"></i>搜索
+            </label>
+            <button class="ms-SearchBox-closeButton">
+                <i class="ms-Icon ms-Icon--x"></i>
+            </button>
+        </div>
+    </div>
