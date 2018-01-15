@@ -37,9 +37,18 @@ function DetailsController($q, $scope, $rootScope,
     };
 
     // load idiom by text
-    function switchToIdiom (text) {
+    async function switchToIdiom (text) {
         if (text) {
-            dataService.getIdiomByText(text).then(function (r) {
+            try {
+                var item = await dataService.getIdiomByText2(text);
+                //console.log('finished', item);
+                $scope.result = item;
+                $scope.$apply();
+            }
+            catch (e) {
+                console.log('[DetailsController] view change failed.', e);
+            }
+            /**
                 $scope.result = r;
                 var glyphs = DictUtils.getChars(r['field_text']);
                 var i;
@@ -56,9 +65,10 @@ function DetailsController($q, $scope, $rootScope,
                     }
                 }
 
-            }).catch(function () {
-                console.log('detailsCtrl: view change failed.');
-            });
+             */
+            
+            
+               
         }
     };
 
@@ -68,7 +78,7 @@ function DetailsController($q, $scope, $rootScope,
     }
 
     $scope.highOn = function (annoId) {
-        var indices = $scope.result['field_annotations'][annoId]['indices'];
+        var indices = $scope.result.annotations[annoId].highlightedRegion;
         var i;
         for (i=0; i<indices.length; ++i) {
             $scope.highlight[indices[i]]=true;
@@ -77,7 +87,7 @@ function DetailsController($q, $scope, $rootScope,
     };
 
     $scope.highOff = function (annoId) {
-        var indices = $scope.result['field_annotations'][annoId]['indices'];
+        var indices = $scope.result.annotations[annoId].highlightedRegion;
         var i;
         for (i=0; i<indices.length; ++i) {
             $scope.highlight[indices[i]]=false;

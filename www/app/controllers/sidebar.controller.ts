@@ -44,13 +44,13 @@ function SidebarController($scope, $rootScope, $location, dataService) {
 
     }
 
-    function loadAll() {
-        $scope.loading=true;
-        dataService.getAllIdioms().then(function (r) {
-            $scope.list = r;
-            $scope.loaded = true;
-            $scope.loading= false;
-        });
+    async function loadAll() {
+        $scope.loading = true;
+        $scope.list = await dataService.getAllIdioms2();
+        console.log($scope.list);
+        $scope.loaded = true;
+        $scope.loading= false;
+
     }
 
     loadAll();

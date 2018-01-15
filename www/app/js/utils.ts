@@ -1,22 +1,22 @@
 'use strict';
 
-function getSymbols(string) {
+function getSymbols(str) {
     var index = 0;
-    var length = string.length;
+    var length = str.length;
     var output = [];
     for (; index < length - 1; ++index) {
-        var charCode = string.charCodeAt(index);
+        var charCode = str.charCodeAt(index);
         if (charCode >= 0xD800 && charCode <= 0xDBFF) {
-            charCode = string.charCodeAt(index + 1);
+            charCode = str.charCodeAt(index + 1);
             if (charCode >= 0xDC00 && charCode <= 0xDFFF) {
-                output.push(string.slice(index, index + 2));
+                output.push(str.slice(index, index + 2));
                 ++index;
                 continue;
             }
         }
-        output.push(string.charAt(index));
+        output.push(str.charAt(index));
     }
-    output.push(string.charAt(index));
+    output.push(str.charAt(index));
     return output;
 }
 

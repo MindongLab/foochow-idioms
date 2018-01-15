@@ -5,9 +5,12 @@
         "module": "commonjs",            // specifiy module code generation
         "target": "es5",            // specify ECMAScript target version
         "allowJs": true,             // allow a partial TypeScript and JavaScript codebase  
-        "typeRoots": [ "./node_modules/@types" ]
+        "typeRoots": [ "./node_modules/@types" ],
+        "moduleResolution": "node",
+        "lib": ["es2015","es5","dom","scripthost"]
     },
     "include": [
-        "./app/"
+        "./app/**/*.ts"
+       // "./node_modules/typescript-collections/**/*.ts"
     ]
 }
