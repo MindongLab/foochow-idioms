@@ -51,7 +51,7 @@ var appConfig = {
 
   },
   prod: {
-    "SERVER_API_URL": "http://fiapi.radiumz.org:2052/api",
+    "SERVER_API_URL": "http://fiapi.radiumz.org/api",
     "SERVER_AUDIO_URL": "http://idioms.mindong.asia/assets/audio/",
     "CI_BUILD_NUMBER": process.env.TRAVIS_BUILD_NUMBER,
     "CI_COMMIT_HASH": git.short(),
