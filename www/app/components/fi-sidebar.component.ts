@@ -1,7 +1,9 @@
 'use strict';
+import { defaultDictUtil } from '../utils/DictUtil';
+import { IdiomDataService } from '../idioms/idiom-data.service';
 
 var $ = require('jquery');
-function FiSidebarController($scope, $rootScope, $location, dataService) {
+function FiSidebarController($scope, $rootScope, $location, dataService: IdiomDataService) {
 
     var ctrl = this;
     var hideSidebar = function() {
@@ -13,6 +15,7 @@ function FiSidebarController($scope, $rootScope, $location, dataService) {
     // Only applicable in mobile view
     ctrl.isOpen = false;
     ctrl.tagName = "";
+    ctrl.DictUtil = defaultDictUtil;
 
     ctrl.$onInit = function () {
         $(".ms-SearchBox").SearchBox();
@@ -32,10 +35,10 @@ function FiSidebarController($scope, $rootScope, $location, dataService) {
     function switchToTag(tag) {
         if (tag && tag!='') {
             ctrl.loading = true;
-            dataService.getIdiomsByTag(tag).subscribe(function (r) {
+            dataService.getIdiomsByTag2(tag).subscribe(function (r) {
                 ctrl.list = r;
-                ctrl.tagName =  tag;
-                ctrl.loading= false;
+                ctrl.tagName = tag;
+                ctrl.loading = false;
             });
         } else {
             ctrl.tagName="";
@@ -46,7 +49,7 @@ function FiSidebarController($scope, $rootScope, $location, dataService) {
 
     function loadAll() {
         ctrl.loading=true;
-        dataService.getAllIdioms().subscribe(function (r) {
+        dataService.getAllIdioms2().subscribe(function (r) {
             ctrl.list = r;
             ctrl.loaded = true;
             ctrl.loading= false;

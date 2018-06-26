@@ -1,3 +1,5 @@
-export { IdiomEntry } from "./idiom-entry";
-export { AnnotationEntry } from "./annotation-entry";
-export { HighlightRegion } from "./highlight-region";
+export * from './char-array';
+export * from './highlight-region';
+export * from './idiom-annotation';
+export * from './idiom-entry';
+export * from './idiom-tag';

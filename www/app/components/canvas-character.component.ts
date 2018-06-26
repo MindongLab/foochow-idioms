@@ -18,7 +18,7 @@ function CanvasCharacterController($scope, KageService) {
             'background': 'url("'+ctrl.imgBase64Url+'")',
             'background-size': 'contain',
             'display': 'inline-block',
-            'vertical-align': -5
+            'vertical-align': '-5%'
         };
         KageService.getGlyphImage(requestedText, 200, 1).subscribe(
             (r)=> {

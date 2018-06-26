@@ -8,6 +8,7 @@ declare var Polygons: any;
 
 @Injectable()
 export class KageService {
+    cache = {};
     constructor (private dataService: IdiomDataService) {
 
     }
@@ -37,11 +38,19 @@ export class KageService {
         }
     }
 
-    getKage(ids, canvas) : Observable<any> {
-        return this.dataService.getGlyph(ids).map(function (r) {
-            this.drawKage(r["field_kanjivg"], canvas);
-            return canvas;
-        }.bind(this));
+    getKage(ids, canvas): Observable<any> {
+        if (this.cache[ids] !== undefined) {
+            return Observable.of(this.cache[ids]).map((r) => {
+                this.drawKage(r["field_kanjivg"], canvas);
+                return canvas;
+            });
+        } else {
+            return this.dataService.getGlyph(ids).map((r) => {
+                this.cache[ids] = r;
+                this.drawKage(r["field_kanjivg"], canvas);
+                return canvas;
+            });
+        }
         //@todo: error handling
     }
 

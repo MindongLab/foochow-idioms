@@ -24,7 +24,10 @@ export class DictUtil {
         return output;
     }
 
-    // Get chars in a string. Treat IDS as a char.
+    
+    /**
+     * Get chars in a string. Treat IDS as a char.
+     */
     getChars(str) : string[] {
         var unicodeStr = this.getSymbols(str);
         var outputStr = [], tmp="";
@@ -50,4 +53,18 @@ export class DictUtil {
         }
         return outputStr;
     }
+
+    /**
+     * Whether or not a glyph should be rendered using canvas.
+     *
+     * @param c 
+     */
+    charIsCanvasChar(c: string): boolean {
+        if ((c[0] == '{' && c[c.length - 1] == '}') || (this.extendedGlyphs.indexOf(c) != -1))
+            return true
+        else
+            return false;
+    }
 }
+
+export const defaultDictUtil = new DictUtil();

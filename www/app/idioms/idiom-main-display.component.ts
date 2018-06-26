@@ -9,8 +9,8 @@ import { DictUtil } from "../utils/DictUtil";
 })
 export class IdiomMainDisplayComponent {
     @Input() text: string[];
-    @Input() highlighted: HighlightRegion[];
-
+    @Input() highlighted: HighlightRegion[] = [];
+    @Input() size: number = 42;
     private DictUtil = new DictUtil();
     constructor() {
 
@@ -32,4 +32,3 @@ export class IdiomMainDisplayComponent {
             return false;
     }
 }
-
