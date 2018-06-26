@@ -28,7 +28,6 @@ function FiSidebarController($scope, $rootScope, $location, dataService) {
     ctrl.removeTagClicked = function () {
         switchToTag("");
     }
-    ctrl.filterString = "123";
 
     function switchToTag(tag) {
         if (tag && tag!='') {
