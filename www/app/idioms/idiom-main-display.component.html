@@ -1,0 +1,5 @@
+<span *ngFor="let char of text; let i=index" [ngClass]="{'highlight': isHighlighted(i)}">
+    <a *ngIf="!charIsCanvasChar(char)">{{char}}</a>
+    <canvas-character ids="{{char}}" size="{{size}}" *ngIf="charIsCanvasChar(char)">
+    </canvas-character>
+</span>

@@ -1,34 +1,37 @@
 "use strict";
-angular.module('app', ['ngRoute'])
-.constant("SERVER_API_URL","http://fiapi.radiumz.org:2052/api")
-.constant("SERVER_AUDIO_URL","/assets/audio/")
-
-.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider
-        .when('/', {
-            templateUrl: 'app/views/welcome.tpl.html',
-            controller: 'homeController'
-        })
-        .when('/idiom/:idiomtext*', {
-            templateUrl: 'app/views/showDetails.tpl.html',
-            controller: 'detailsController',
-            caseInsensitiveMatch: true
-        })
-        .when('/help', {
-            templateUrl: 'app/views/help.tpl.html'
-            // controller: 'mainCtrl'
-        })
-        .when('/tags', {
-            templateUrl: 'app/views/tags.tpl.html' ,
-            controller: 'tagsController'
-        })
-        .when('/apps', {
-            templateUrl: 'app/views/apps.tpl.html'
-        })
-        .otherwise({
-            redirectTo: '/'
-        });
-}]);
+angular.module('app', ['ui.router'])
+    .constant("SERVER_API_URL",/** inject:SERVER_API_URL **/"http://fiapi.radiumz.org:2052/api"/** endinject **/)
+    .constant("SERVER_AUDIO_URL",/** inject:SERVER_AUDIO_URL **/"/assets/audio/"/** endinject **/)
+    .constant("CI_BUILD_NUMBER",/** inject:CI_BUILD_NUMBER **/"dev"/** endinject **/)
+    .constant("CI_COMMIT_HASH",/** inject:CI_COMMIT_HASH **/"dev"/** endinject **/)
+    .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state({
+                name: 'home',
+                url: '/',
+                component: 'landingPage'
+            })
+            .state({
+                name: 'showidiom',
+                url: '/idiom/{idiomtext}',
+                component: 'viewIdiomPage',
+                caseInsensitiveMatch: true
+            })
+            .state({
+                name: 'showhelp',
+                url: '/help',
+                component: 'helpPage'
+            })
+            .state({
+                name: 'showcategories',
+                url: '/tags',
+                component: 'categoryPage'
+            })
+            .state({
+                name: 'showapps',
+                url: '/apps',
+                component: 'appsPage'
+            });
 
 require('./components');
 require('./controllers');

@@ -1,4 +1,5 @@
-var DictUtils = require('./utils');
+import { DictUtil } from "../utils/DictUtil";
+var DictUtils = new DictUtil();
 
 export class CharArray {
     private _text : Array<string> = new Array<string>();

@@ -1,8 +1,6 @@
 // Data model 一个熟语词条
 
-import {IdiomTag} from "./idiom-tag";
-import {IdiomAnnotation} from "./idiom-annotation";
-import {CharArray} from "../js/char-array";
+import {CharArray, IdiomAnnotation, IdiomTag} from "./";
 
 export class IdiomEntry {
     textHans: CharArray = new CharArray("");  // 简体
@@ -28,8 +26,6 @@ export class IdiomEntry {
     constructor () {
 
     }
-
-
     
     addAnnotation(anno : IdiomAnnotation) {
         this._annotations.push(anno);
@@ -38,7 +34,6 @@ export class IdiomEntry {
     addTag(t : IdiomTag) {
         this._tags.push(t);
     }
-
     
     get tags() {
         return this._tags;
@@ -63,7 +58,6 @@ export class IdiomEntry {
         });
         // ensure the annotations are sorted
     }
-
     
     setTextUsingString(str: string) {
         this.textHans.text = str;
