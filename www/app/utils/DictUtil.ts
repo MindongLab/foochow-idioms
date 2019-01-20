@@ -1,5 +1,3 @@
-'use strict';
-
 export class DictUtil {
     
     // Glyphs that are Unicode extended chars, but are missing in some fonts. (Needs to be replaced by KanjiVG)

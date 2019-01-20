@@ -30,7 +30,7 @@ angular.module('app', ['ui.router'])
             .state({
                 name: 'showapps',
                 url: '/apps',
-                component: 'appsPage'
+                template: '<apps-page></apps-page>'
             });
 
         $urlRouterProvider.otherwise('/');
@@ -48,6 +48,7 @@ import { KageService } from "./canvas-char/kage.service";
 import { PlayerButtonComponent } from "./idioms/player-button.component";
 import { IdiomMainDisplayComponent } from "./idioms/idiom-main-display.component";
 import { SearchBoxComponent } from "./fi-app/search-box.component";
+import { AppsPageComponent } from "./components/apps-page.component";
 platformBrowserDynamic().bootstrapModule(AppModule);
 
 angular.module('app')
@@ -56,5 +57,6 @@ angular.module('app')
     .directive('playerButton', downgradeComponent({ component: PlayerButtonComponent }))
     .directive('idiomMainDisplay', downgradeComponent({ component: IdiomMainDisplayComponent }))
     .directive('searchBox', downgradeComponent({ component: SearchBoxComponent }))
+    .directive('appsPage', downgradeComponent({ component: AppsPageComponent }))
     .factory('IdiomDataService', downgradeInjectable(IdiomDataService))
     .factory('KageService', downgradeInjectable(KageService))

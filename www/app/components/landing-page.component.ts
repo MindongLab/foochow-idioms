@@ -25,7 +25,7 @@ function LandingPageController($scope, $rootScope, $location, kageService) {
 
 };
 
-LandingPageController.$inject = ['$scope', '$rootScope', '$location', "KageService"];;
+LandingPageController.$inject = ['$scope', '$rootScope', '$location', "KageService"];
 
 var LandingPage = {
     template: require('./landing-page.component.html'),

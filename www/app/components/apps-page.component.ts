@@ -1,12 +1,13 @@
-'use strict';
+import { Component } from '@angular/core';
 
-function AppsPageController() {
 
-};
-
-var AppsPage = {
+@Component({
     template: require('./apps-page.component.html'),
-    controller: AppsPageController
-}
+    selector: 'apps-page'
+})
+export class AppsPageComponent {
 
-module.exports = AppsPage;
+    constructor() {
+        // do nothing
+    }
+};
