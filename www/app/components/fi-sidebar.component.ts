@@ -1,62 +1,76 @@
-'use strict';
 import { defaultDictUtil } from '../utils/DictUtil';
 import { IdiomDataService } from '../idioms/idiom-data.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NavigationEventsService } from '../navigation/navigation-events.service';
 
-var $ = require('jquery');
-function FiSidebarController($scope, $rootScope, $location, dataService: IdiomDataService) {
+const $ = require('jquery');
+const DictUtil = defaultDictUtil;
 
-    var ctrl = this;
-    var hideSidebar = function() {
-        $("#sideBar").addClass("sideBarHide");
-    };
-    ctrl.loading = false;
-    ctrl.list = [];
-    ctrl.loaded = false;
+
+export class FiSidebarComponent implements OnInit, OnDestroy {
+ 
+    
+    loading: boolean = false;
+    list = [];
+    loaded: boolean = false;
     // Only applicable in mobile view
-    ctrl.isOpen = false;
-    ctrl.tagName = "";
-    ctrl.DictUtil = defaultDictUtil;
+    isOpen = false;
+    tagName = "";
 
-    ctrl.$onInit = function () {
+
+    constructor (/*$rootScope $location,*/ naviEvents: NavigationEventsService, private dataService: IdiomDataService) {
+        this.loadAll();
+
+    }
+
+    ngOnInit(): void {
         $(".ms-SearchBox").SearchBox();
     }
 
-    ctrl.listItemClicked = function (text) {
+    ngOnDestroy(): void {
+        throw new Error("Method not implemented.");
+    }
+
+    hideSidebar = function() {
+        $("#sideBar").addClass("sideBarHide");
+    };
+    
+
+    onListItemClicked (text) {
         $rootScope._query = text;
         //$rootScope.$emit("switchToIdiom", {'text': text});
         $location.path('/idiom/'+text);
         $rootScope.$emit("toggleSidebar", {'state':false});
     };
 
-    ctrl.removeTagClicked = function () {
-        switchToTag("");
+    onRemoveTagClicked () {
+        this.switchToTag("");
     }
 
-    function switchToTag(tag) {
+    switchToTag(tag) {
         if (tag && tag!='') {
-            ctrl.loading = true;
-            dataService.getIdiomsByTag2(tag).subscribe(function (r) {
-                ctrl.list = r;
-                ctrl.tagName = tag;
-                ctrl.loading = false;
+            this.loading = true;
+            this.dataService.getIdiomsByTag2(tag).subscribe(function (r) {
+                this.list = r;
+                this.tagName = tag;
+                this.loading = false;
             });
         } else {
-            ctrl.tagName="";
-            loadAll();
+            this.tagName="";
+            this.loadAll();
         }
 
     }
 
-    function loadAll() {
-        ctrl.loading=true;
-        dataService.getAllIdioms2().subscribe(function (r) {
-            ctrl.list = r;
-            ctrl.loaded = true;
-            ctrl.loading= false;
+    private loadAll() {
+        this.loading=true;
+        this.dataService.getAllIdioms2().subscribe(function (r) {
+            this.list = r;
+            this.loaded = true;
+            this.loading= false;
         });
     }
 
-    loadAll();
 
     var unbindSTT = $rootScope.$on("switchToTag", function (e, args) {
         if (args && args.tag) {
@@ -81,10 +95,10 @@ function FiSidebarController($scope, $rootScope, $location, dataService: IdiomDa
     };
 
     function toggleSidebar(state) {
-        if (state!=undefined) {
-            if (state == false)
+        if (state != undefined) {
+            if (state === false)
                 ctrl.isOpen = false;
-            else if (state == true)
+            else if (state === true)
                 ctrl.isOpen = true;
         } else {
             ctrl.isOpen = !ctrl.isOpen;
@@ -100,8 +114,6 @@ function FiSidebarController($scope, $rootScope, $location, dataService: IdiomDa
             setTimeout(hideSidebar, 170);
         }
     }
-
-    ctrl.toggleSidebar = toggleSidebar;
 
 };
 

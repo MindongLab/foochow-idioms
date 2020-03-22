@@ -9,6 +9,5 @@ angular.module('app')
     .component('fiSidebar', require('./fi-sidebar.component'))
     .component('viewIdiomPage', require('./view-idiom-page.component'))
     .component('helpPage', require('./help-page.component'))
-    .component('landingPage', require('./landing-page.component'))
     .component('categoryPage', require('./category-page.component'))
     .component('sharePanel', require('./share-panel.component'));

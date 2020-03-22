@@ -8,19 +8,19 @@
             </div>
             <div class="ms-Grid-row">
                 <div class="ms-Grid-col ms-u-sm12 ms-u-lg4">
-                    <div ng-click="$ctrl.featureClicked(1)" class="featureButton ms-bgColor-themeLighter">
+                    <div (click)="onFeatureClicked(1)" class="featureButton ms-bgColor-themeLighter">
                         <i class="ms-Icon ms-Icon--listgroup2 ms-fontColor-themePrimary featureButton-icon" ></i>
                         <div class="ms-Font-l featureButton-text ms-fontColor-themeDarkAlt">所有熟语</div>
                     </div>
                 </div>
                 <div class="ms-Grid-col ms-u-sm12 ms-u-lg4">
-                    <div ng-click="$ctrl.featureClicked(2)" class="featureButton ms-bgColor-themeLighter">
+                    <div (click)="onFeatureClicked(2)" class="featureButton ms-bgColor-themeLighter">
                         <i class="ms-Icon ms-Icon--tag ms-fontColor-themePrimary featureButton-icon" ></i>
                         <div class="ms-Font-l featureButton-text ms-fontColor-themeDarkAlt">分类标签</div>
                     </div>
                 </div>
                 <div class="ms-Grid-col ms-u-sm12 ms-u-lg4">
-                    <div ng-click="$ctrl.featureClicked(3)" class="featureButton  ms-bgColor-themeLighter">
+                    <div (click)="onFeatureClicked(3)" class="featureButton ms-bgColor-themeLighter">
                         <i class="ms-Icon ms-Icon--question ms-fontColor-themePrimary featureButton-icon" ></i>
                         <div class="ms-Font-l featureButton-text ms-fontColor-themeDarkAlt">帮助</div>
                     </div>

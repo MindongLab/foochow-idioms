@@ -9,7 +9,7 @@ angular.module('app', ['ui.router'])
             .state({
                 name: 'home',
                 url: '/',
-                component: 'landingPage'
+                template: '<landing-page></landing-page>'
             })
             .state({
                 name: 'showidiom',
@@ -49,6 +49,7 @@ import { PlayerButtonComponent } from "./idioms/player-button.component";
 import { IdiomMainDisplayComponent } from "./idioms/idiom-main-display.component";
 import { SearchBoxComponent } from "./fi-app/search-box.component";
 import { AppsPageComponent } from "./components/apps-page.component";
+import { LandingPageComponent } from "./components/landing-page.component";
 platformBrowserDynamic().bootstrapModule(AppModule);
 
 angular.module('app')
@@ -57,6 +58,7 @@ angular.module('app')
     .directive('playerButton', downgradeComponent({ component: PlayerButtonComponent }))
     .directive('idiomMainDisplay', downgradeComponent({ component: IdiomMainDisplayComponent }))
     .directive('searchBox', downgradeComponent({ component: SearchBoxComponent }))
+    .directive('landingPage', downgradeComponent({ component: LandingPageComponent }))
     .directive('appsPage', downgradeComponent({ component: AppsPageComponent }))
     .factory('IdiomDataService', downgradeInjectable(IdiomDataService))
     .factory('KageService', downgradeInjectable(KageService))

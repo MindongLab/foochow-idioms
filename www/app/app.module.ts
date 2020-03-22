@@ -16,6 +16,8 @@ import { CanvasCharacterDirective } from './components/canvas-character.directiv
 import { IdiomMainDisplayComponent } from './idioms/idiom-main-display.component';
 import { SearchBoxComponent } from './fi-app/search-box.component';
 import { AppsPageComponent } from './components/apps-page.component';
+import { LandingPageComponent } from './components/landing-page.component';
+import { NavigationEventsService } from './navigation/navigation-events.service';
 
 @NgModule({
     imports: [
@@ -33,7 +35,8 @@ import { AppsPageComponent } from './components/apps-page.component';
         FiHeaderDirective,
         FiMainviewDirective,
         CanvasCharacterDirective,
-        AppsPageComponent
+        AppsPageComponent,
+        LandingPageComponent
     ],
     entryComponents: [
         FiAppComponent,
@@ -41,11 +44,13 @@ import { AppsPageComponent } from './components/apps-page.component';
         PlayerButtonComponent,
         IdiomMainDisplayComponent,
         SearchBoxComponent,
-        AppsPageComponent
+        AppsPageComponent,
+        LandingPageComponent
     ],
     providers: [
         IdiomDataService,
-        KageService
+        KageService,
+        NavigationEventsService
     ]
 })
 export class AppModule {
