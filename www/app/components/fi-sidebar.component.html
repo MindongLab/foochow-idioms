@@ -1,31 +1,13 @@
 <div id="sideBar" class="ms-bgColor-themeLight sideBarHide">
-
-    <div style="display:flex; flex-direction:row;">
-        <div class="tagButton" ng-class="{'tagButton-hide':!($ctrl.tagName.length)}" style="order:1">
-            <div class="tagButton-text ms-Font-m">
-                {{$ctrl.tagName}}
-            </div>
-            <div ng-click="$ctrl.removeTagClicked()" class="tagButton-removeButton">
-                <i class="ms-Icon ms-Icon--x"></i>
-            </div>
-
-        </div>
-        <div class="filterSearch ms-SearchBox" style="order:2; flex-grow:100;">
-            <input class="ms-SearchBox-field SearchBox" ng-model="filterString">
-            <label class="ms-SearchBox-label">
-                <i class="ms-SearchBox-icon ms-Icon ms-Icon--search"></i>搜索
-            </label>
-            <button class="ms-SearchBox-closeButton">
-                <i class="ms-Icon ms-Icon--x"></i>
-            </button>
-        </div>
-    </div>
+    <search-box [(search-text)]="$ctrl.filterString" [filter]="$ctrl.tagName" (filter-removed)="$ctrl.removeTagClicked()"></search-box>
     <ul class="ms-List resultList">
-        <div ng-repeat="item in filteredList = ($ctrl.list | filter:filterString)" class="cListItem is-selectable" ng-click="$ctrl.listItemClicked(item)">
-            <span class="cListItem-primaryText ms-Font-xl">{{item}}</span>
+        <div ng-repeat="item in filteredList = ($ctrl.list | filter:$ctrl.filterString)" class="cListItem is-selectable" ng-click="$ctrl.listItemClicked(item)">
+            <span class="cListItem-primaryText ms-Font-xl">
+                <idiom-main-display [text]="item.asArray" size="21"></idiom-main-display>
+            </span>
+            
         </div>
         <div ng-show="$ctrl.loading" class="ms-Spinner"></div>
         <div ng-show="$ctrl.loaded && filteredList.length==0" class="ms-Font-xl">没有符合条件的结果</div>
-
     </ul>
 </div>

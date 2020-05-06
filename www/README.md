@@ -2,7 +2,7 @@
 
 ## Local development
 ```
-yarn install
+pnpm install
 bower install
 gulp serve:dev
 ```

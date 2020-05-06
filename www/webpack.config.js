@@ -1,31 +1,24 @@
 var webpack = require('webpack');
+const path = require('path')
 
 module.exports = {
-    context: __dirname ,
+    context: __dirname,
     entry: {
-        app: './app/app.ts'
-    /*    vendor: [
-            './assets/vendor/kage-engine/2d.js',
-            './assets/vendor/kage-engine/buhin.js',
-            './assets/vendor/kage-engine/curve.js',
-            './assets/vendor/kage-engine/kage.js',
-            './assets/vendor/kage-engine/kagecd.js',
-            './assets/vendor/kage-engine/kagedf.js',
-            './assets/vendor/kage-engine/polygon.js',
-            './assets/vendor/kage-engine/polygons.js'
-        ]*/
+        '03app': './app/app.ts',
+        '02vendor': './app/vendor.ts',
+        '01polyfills': './app/polyfills.ts'
     },
     resolve: {
         extensions: ['.ts', '.js']
     },
     output: {
         path: __dirname + '/build',
-        filename: 'app.bundle.js'
+        filename: '[name].bundle.js'
     },
     module: {
         rules: [
-            { test: /\.(t|j)s$/, use: { loader: 'awesome-typescript-loader?{tsconfig: "tsconfig.json"}' } },
-            { test: /\.(html)$/, use: { loader: 'html-loader', options: { attrs: false }}},
+            { test: /\.ts$/, use: { loader: 'awesome-typescript-loader?{tsconfig: "tsconfig.json"}' } },
+            { test: /\.(html)$/, use: { loader: 'html-loader', options: { attrs: false } } },
             // addition - add source-map support 
             { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
         ]
@@ -36,10 +29,20 @@ module.exports = {
         'kage-engine': 'Kage'
     },
     plugins: [
-      //  new webpack.optimize.CommonsChunkPlugin({ name: "vendor", filename: "vendor.bundle.js"}),
+        // Workaround for angular/angular#11580
+        new webpack.ContextReplacementPlugin(
+            // The (\\|\/) piece accounts for path separators in *nix and Windows
+            /angular(\\|\/)core(\\|\/)@angular/,
+            path.join(__dirname, 'app'), // location of your src
+            {} // a map of your routes
+        ),
         new webpack.ProvidePlugin({
             'Kage': 'kage-engine'
-        })          
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ['03app', '02vendor', '01polyfills']
+        }),
+
     ],
     devtool: 'source-map'
 }

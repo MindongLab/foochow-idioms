@@ -90,7 +90,7 @@ gulp.task('js:vendor', function () {
     .pipe(sourcemaps.init())
     .pipe(stripDebug())
     .pipe(uglify())
-    .pipe(concat('all.min.js'))
+    .pipe(concat('00oldvendor.min.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./build'));
 });

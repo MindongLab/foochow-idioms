@@ -1,35 +1,41 @@
-'use strict';
+import { Component } from "@angular/core"; 
+import { KageService } from "../canvas-char/kage.service";
+import { NavigationEventsService } from "../navigation/navigation-events.service";
 
-function LandingPageController($scope, $rootScope, $location, kageService) {
-    var ctrl = this;
+@Component({
+    template: require('./landing-page.component.html'),
+    selector: 'landing-page'    
+})
+export class LandingPageComponent {
+    
+    private kageService: KageService;
+    
+    constructor (/*$rootScope, $location,*/ kageService: KageService, 
+        private naviEvents: NavigationEventsService) {
+        this.kageService = kageService;
+    }
 
-    ctrl.featureClicked = function (id) {
+    public onFeatureClicked(id) {
         switch (id)
         {
             case 1:  // List All
                 // show sideBar
-                $rootScope.$emit("toggleSidebar", {'state':true});
+                console.log("toggleSidebar", {'state':true});
+                this.naviEvents.toggleSidebar(true);
                 // remove tag filter
-                $rootScope.$emit("switchToTag", {'tag':""});
+                console.log("switchToTag", {'tag':""});
                 break;
             case 2:
-                $location.path('/tags');
-                $rootScope.$emit("toggleSidebar", {'state': false});
+                console.log('/tags');
+                this.naviEvents.toggleSidebar(false);
                 break;
             case 3:
-                $location.path('/help');
-                $rootScope.$emit("toggleSidebar", {'state': false});
+                console.log('/help');
+                this.naviEvents.toggleSidebar(false);
                 break;
         }
-    };
+    }
 
-};
-
-LandingPageController.$inject = ['$scope', '$rootScope', '$location', "KageService"];;
-
-var LandingPage = {
-    template: require('./landing-page.component.html'),
-    controller: LandingPageController
 }
 
-module.exports = LandingPage;
+
